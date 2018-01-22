@@ -28,15 +28,3 @@ class Solution(object):
                 else:
                     sum = sum - dic[s[x]]
         return sum
-
-
-
-if __name__ =='__main__':
-    sol = Solution()
-    print sol.romanToInt('III')
-    print sol.romanToInt('XII')
-    print sol.romanToInt('XCIX')
-    print sol.romanToInt('MDCCC')
-    print sol.romanToInt('MMMCCCXXXIII')
-    print sol.romanToInt('D')
-    print sol.romanToInt('MCMXCVI')

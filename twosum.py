@@ -10,22 +10,16 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        result = []
+        dic = {}
         for x in range(0, len(nums)):
-            for y in range(x+1, len(nums)):
-                sum = nums[x] + nums[y]
-                if sum == target:
-                    print "x,y", x, y
-                    result.append(x)
-                    result.append(y)
-                    break
-                else:
-                    continue
-                break
-            else:
-                continue
-            break
-        return result
+            dic[nums[x]] = x
+            print dic
+
+        for x in range(0, len(nums)):
+            rest = abs(target - nums[x])
+            print rest
+            if rest in dic:
+                return result[] = [x, dic[rest]]
 
 
 if __name__ == '__main__':

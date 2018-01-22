@@ -21,22 +21,3 @@ class Solution(object):
         elif finalnum < -1 * 2 ** 31:
             finalnum = 0
         return finalnum
-
-if __name__ == '__main__':
-    sol = Solution()
-    result = sol.reverse(120)
-    print result
-    result = sol.reverse(-120)
-    print result
-    result = sol.reverse(0)
-    print result
-    result = sol.reverse(-123)
-    print result
-    result = sol.reverse(1534236469)
-    print result
-    result = sol.reverse(900000)
-    print result
-    result = sol.reverse(1563847412)
-    print result
-    result = sol.reverse(-1563847412)
-    print result
