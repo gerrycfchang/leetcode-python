@@ -1,6 +1,6 @@
 from unittest import TestCase
 from merge_two_sorted_list import MergeTwoSortedList
-from merge_two_sorted_list import LinkedList
+from leetCodeUtil import LinkedList
 import unittest
 
 class TestSolution(TestCase):
@@ -24,7 +24,7 @@ class TestSolution(TestCase):
         exp.insertNode(4)
 
         result = LinkedList()
-        result.first = sol.mergeTwoLists(l1.first,l2.first)
+        result.head = sol.mergeTwoLists(l1.head,l2.head)
         self.assertListEqual(list(result),list(exp))
 
 if __name__ == '__main__':
