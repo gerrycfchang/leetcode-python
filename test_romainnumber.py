@@ -1,6 +1,7 @@
 from unittest import TestCase
-from roman_to_integer import Solution
 import unittest
+from roman_to_integer import Solution
+
 
 class TestSolution(TestCase):
     def test_romanToInt(self):
