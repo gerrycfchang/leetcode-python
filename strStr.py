@@ -10,10 +10,7 @@ class Solution(object):
         :rtype: int
         """
 
-        hstr = list(haystack)
-        nstr = list(needle)
-
-        if len(hstr) < len(nstr):
+        if len(haystack) < len(needle):
             return -1
         elif len(haystack) == 0 and len(needle) > 0:
             return -1
@@ -21,7 +18,7 @@ class Solution(object):
             return 0
 
         for i in range(len(hstr)-len(nstr)+1):
-            if hstr[i:i+len(nstr)] == nstr:
+            if haystack[i:i+len(needle)] == needle:
                 return i
 
         return -1
