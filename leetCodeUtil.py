@@ -31,3 +31,25 @@ class LinkedList(object):
             yield item.val
             item = item.next
 
+class TreeNode(object):
+    def __init__(self, x):
+        self.left = None
+        self.right = None
+        self.value = x
+        self.array = []
+
+    def iterNodes(self, x):
+
+        if x.left is not None:
+            self.iterNodes(x.left)
+
+        self.array.append(x.value)
+
+        if x.right is not None:
+            self.iterNodes(x.right)
+
+
+    def __iter__(self):
+        self.iterNodes(self)
+        for i in range(len(self.array)):
+            yield self.array[i]
