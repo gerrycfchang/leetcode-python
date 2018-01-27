@@ -53,3 +53,26 @@ class TreeNode(object):
         self.iterNodes(self)
         for i in range(len(self.array)):
             yield self.array[i]
+            
+
+class BreathFirstSearsh(object):
+    def __init__(self):
+        #self.node = x
+        self.array = []
+        self.queue = []
+
+    def bfs(self, node):
+        self.array.append(node.value)
+        if node.left is not None:
+            self.queue.append(node.left)
+        if node.right is not None:
+            self.queue.append(node.right)
+
+        if (len(self.queue) > 0):
+            self.bfs(self.queue.pop(0))
+        else:
+            return
+
+        return self.array
+
+
