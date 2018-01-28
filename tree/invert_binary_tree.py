@@ -15,6 +15,8 @@ to
 9   6 3   1
 
 """
+import sys
+sys.path.append('../')
 from leetCodeUtil import TreeNode
 
 class Solution(object):

@@ -3,7 +3,6 @@ import unittest
 import sys
 sys.path.append('../')
 from leetCodeUtil import TreeNode
-from leetCodeUtil import BreathFirstSearch
 from convert_sorted_array_binarytree import Solution
 
 
@@ -13,8 +12,7 @@ class TestSolution(TestCase):
         sol = Solution()
         node = sol.sortedArrayToBST([1, 2, 3])
 
-        bfs = BreathFirstSearch()
-        result1 = list(bfs.bfs(node))
+        result1 = list(node.getBFS(node))
 
         exp1 = [2, 1, 3]
         self.assertListEqual(result1, exp1)
@@ -24,8 +22,7 @@ class TestSolution(TestCase):
         sol = Solution()
         node = sol.sortedArrayToBST([-10, -3, 0, 5, 9])
 
-        bfs = BreathFirstSearch()
-        result1 = list(bfs.bfs(node))
+        result1 = list(node.getBFS(node))
 
         exp1 = [0, -3, 9, -10, 5]
         self.assertListEqual(result1, exp1)

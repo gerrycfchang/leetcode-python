@@ -1,7 +1,9 @@
 from unittest import TestCase
 import unittest
-from leetCodeUtil import TreeNode
 from invert_binary_tree import Solution
+import sys
+sys.path.append('../')
+from leetCodeUtil import TreeNode
 
 class TestSolution(TestCase):
     def test_invertBinaryTreeCase1(self):

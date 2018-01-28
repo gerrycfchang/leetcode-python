@@ -3,7 +3,6 @@ import unittest
 import sys
 from insert_node_binarytree import Solution
 sys.path.append('../')
-from leetCodeUtil import BreathFirstSearch
 from leetCodeUtil import TreeNode
 
 
@@ -18,8 +17,7 @@ class TestSolution(TestCase):
         sol.insertBinaryTreeNode(root, 6)
         sol.insertBinaryTreeNode(root, 9)
 
-        bfs = BreathFirstSearch()
-        result1 = list(bfs.bfs(root))
+        result1 = list(root.getBFS(root))
 
         exp1 = [5, 3, 7, 1, 6, 9]
         self.assertListEqual(result1, exp1)
