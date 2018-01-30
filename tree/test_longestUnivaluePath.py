@@ -63,6 +63,33 @@ class TestSolution(TestCase):
         sol = Solution()
         self.assertEqual(sol.longestUnivaluePath(node), 2)
 
+    def test_LongestUnivalueCase3(self):
+        """
+                    5
+                   / \
+                  5   5
+                 / \ / \
+                5  4    5
+
+        """
+
+        node = TreeNode(5)
+
+        leftNode = TreeNode(5)
+        rightNode = TreeNode(5)
+        node.left = leftNode
+        node.right = rightNode
+
+        thirdLevelLeftNode1 = TreeNode(5)
+        thirdLevelLeftNode2 = TreeNode(4)
+        thirdLevelRightNode1 = TreeNode(5)
+
+        leftNode.left = thirdLevelLeftNode1
+        leftNode.right = thirdLevelLeftNode2
+        rightNode.right = thirdLevelRightNode1
+
+        sol = Solution()
+        self.assertEqual(sol.longestUnivaluePath(node), 4)
 
 
 if __name__ == '__main__':
