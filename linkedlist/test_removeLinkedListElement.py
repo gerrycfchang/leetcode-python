@@ -1,5 +1,7 @@
 from unittest import TestCase
 from remove_linked_list_element import Solution
+import sys
+sys.path.append('../')
 from leetCodeUtil import LinkedList
 from leetCodeUtil import ListNode
 import unittest

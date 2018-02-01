@@ -1,7 +1,8 @@
 """
 Given a singly linked list, determine if it is a palindrome.
 """
-
+import sys
+sys.path.append('../')
 from leetCodeUtil import ListNode
 
 class Solution(object):

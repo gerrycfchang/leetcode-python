@@ -4,7 +4,8 @@ Example
 Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6
 Return: 1 --> 2 --> 3 --> 4 --> 5
 """
-
+import sys
+sys.path.append('../')
 from leetCodeUtil import ListNode
 
 class Solution(object):
