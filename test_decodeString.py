@@ -1,6 +1,6 @@
 from unittest import TestCase
 import unittest
-from decompressed_string import Solution
+from decode_string import Solution
 
 
 class TestSolution(TestCase):
@@ -28,6 +28,11 @@ class TestSolution(TestCase):
         sol = Solution()
 
         self.assertEqual(sol.decompress('abcdef'), 'abcdef')
+
+    def test_decompressStringCase6(self):
+        sol = Solution()
+
+        self.assertEqual(sol.decompress('10[ab]'), 'abababababababababab')
 
 
 if __name__ == '__main__':

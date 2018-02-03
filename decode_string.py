@@ -12,10 +12,15 @@ class Solution(object):
         stack_nums = []
         stack_curr = []
         string = []
+        index = [0]
+        i = 0
 
-        for c in str:
+        while i < len(str):
+            c = str[i]
             if c.isdigit():
-                stack_nums.append(int(c))
+                index[0] = i
+                stack_nums.append(self.getNumber(str, index))
+                i = index[0]
             elif c == '[':
                 string.append(stack_curr)
                 stack_curr = []
@@ -24,7 +29,20 @@ class Solution(object):
                 stack_curr = string.pop()
             else:
                 stack_curr.append(c)
+            i += 1
         return "".join(string[-1]) if string else "".join(stack_curr)
+
+    def getNumber(self, str, index):
+        numStr = ''
+        i = index[0]
+        while i < len(str):
+            if str[i].isdigit():
+                numStr += str[i]
+                i += 1
+            else:
+                break
+        index[0] = i - 1
+        return int(numStr)
 
 
 
