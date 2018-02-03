@@ -14,8 +14,8 @@ class Solution(object):
         :rtype: bool
         """
         if not head: return False
-        slow = fast = head
 
+        slow = fast = head
         isCycle = False
 
         while fast.next is not None and fast.next.next is not None:

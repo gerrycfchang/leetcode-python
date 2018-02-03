@@ -39,5 +39,25 @@ class TestSolution(TestCase):
 
         self.assertEqual(sol.hasCycle(node1), True)
 
+    def test_linkedListCycleCase3(self):
+        sol = Solution()
+
+        """
+        1 > 2 > 3 > 4 > 5 > 6 > 5
+
+        """
+
+        node1 = ListNode(3)
+        node2 = ListNode(2)
+        node3 = ListNode(0)
+        node4 = ListNode(-4)
+
+        node1.next = node2
+        node2.next = node3
+        node3.next = node4
+        node4.next = node2
+
+        self.assertEqual(sol.hasCycle(node1), True)
+
 if __name__ == '__main__':
     unittest.main()
