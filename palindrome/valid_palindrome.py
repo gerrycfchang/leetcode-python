@@ -20,7 +20,7 @@ class Solution(object):
         s = s.lower()
         import re
         s = re.sub(r'[?|$|.|!]', r'', s)
-        s = re.sub(r'[^A-Za-z0-9]+', '', s)
+        s = re.sub(r'^A-Za-z0-9+', '', s)
         rstr = s[::-1]
 
         return s == rstr
