@@ -38,7 +38,5 @@ class TestSolution(TestCase):
         self.assertListEqual(sol.fizzBuzz(3), exp)
 
 
-
-
 if __name__ == "__main__":
     unittest.main()
