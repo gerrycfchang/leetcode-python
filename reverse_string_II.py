@@ -1,3 +1,9 @@
+"""
+Input: s = "abcdefg", k = 2
+Output: "bacdfeg"
+
+"""
+
 class Solution(object):
     def reverseStr(self, s, k):
         """

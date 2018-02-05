@@ -65,8 +65,8 @@ class NestedIterator(object):
         while(itemList is not None):
             if type(itemList) == list and len(itemList) > 0:
                 item = itemList.pop(0)
-            elif len(itemList) > 0:
-                item = itemList
+            #elif len(itemList) > 0:
+            #    item = itemList
             else:
                 return
 
