@@ -11,8 +11,9 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        if n <= 1: return 0
+        
         digits = [1]*n
-
         digits[0] = digits[1] = 0
 
         for i in range(2, int(n ** 0.5)+1):
