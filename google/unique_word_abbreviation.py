@@ -25,14 +25,14 @@ isUnique("cane") -> false
 isUnique("make") -> true
 
 """
-from collections import defaultdict
+
 class ValidWordAbbr(object):
     def __init__(self, dictionary):
         """
         initialize your data structure here.
         :type dictionary: List[str]
         """
-        self.dic = defaultdict(set)
+        self.dic = {}
         for word in dictionary:
             abbr = self.getAbbr(word)
             if abbr not in self.dic:
@@ -42,6 +42,7 @@ class ValidWordAbbr(object):
                     self.dic[abbr] = ""
             """
             Solution 1:
+            self.dic = collections.defaultdict(set)
             self.dic[abbr].add(word)
             """
 
