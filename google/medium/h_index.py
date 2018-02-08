@@ -26,12 +26,12 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
+
         citations.sort()
         citations = citations[::-1]
-        hindex = -1
-        for i in range (len(citations)):
-            if i > citations[i]:
-                hindex = citations[i-1]
-                break
-
-        return hindex
+        hindex = 0
+        for i in range(len(citations)):
+            if i >= citations[i]:
+                hindex = i
+                return hindex
+        return len(citations)

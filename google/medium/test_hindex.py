@@ -7,6 +7,21 @@ class TestSolution(TestCase):
         sol = Solution()
         self.assertEqual(sol.hIndex([3, 0, 6, 1, 5]), 3)
 
+    def test_hIndexCase2(self):
+        sol = Solution()
+        self.assertEqual(sol.hIndex([]), 0)
+
+    def test_hIndexCase3(self):
+        sol = Solution()
+        self.assertEqual(sol.hIndex([0]), 0)
+
+    def test_hIndexCase4(self):
+        sol = Solution()
+        self.assertEqual(sol.hIndex([100]), 1)
+
+    def test_hIndexCase5(self):
+        sol = Solution()
+        self.assertEqual(sol.hIndex([0, 1]), 1)
 
 
 
