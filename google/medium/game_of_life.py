@@ -26,8 +26,12 @@ class Solution(object):
                 live = 0
                 for I in range(max(i-1, 0), min(i+2, m)):
                     for J in range(max(j-1,0), min(j+2, n)):
+                        # the value of live could be 2, 3 or more, only need to check the last bit
                         live += board[I][J] & 1
 
+                # live is 4 and the cell itself is live or
+                # 3 live neighbors
+                # mark the cell asl ive
                 if (live == 4 and board[i][j]) or live == 3:
                     board[i][j] |= 2
 

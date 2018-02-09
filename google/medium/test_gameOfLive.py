@@ -27,6 +27,14 @@ class TestSolution(TestCase):
 
         self.assertListEqual(res, exp)
 
+    def test_gameOfLiveCase4(self):
+        sol = Solution()
+        res = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+        sol.gameOfLife(res)
+        exp = [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
+
+        self.assertListEqual(res, exp)
+
 
 if __name__ == '__main__':
     unittest.main()
