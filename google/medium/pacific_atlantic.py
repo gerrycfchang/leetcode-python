@@ -37,7 +37,9 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[List[int]]
         """
-        m, n, result = len(matrix), len(matrix[0]), []
+        m = len(matrix)
+        if m == 0: return []
+        n, result = len(matrix[0]), []
         pacific = [[False] * n for x in range(m)]
         atlantic = [[False] * n for x in range(m)]
         for i in range(m):
