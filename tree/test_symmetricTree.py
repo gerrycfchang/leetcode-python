@@ -13,8 +13,6 @@ class TestSolution(TestCase):
             1
            / \
           2   2
-         / \ / \
-        3  4 4  3
 
         """
         node = TreeNode(1)
