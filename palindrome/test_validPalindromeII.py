@@ -1,6 +1,6 @@
 from unittest import TestCase
 import unittest
-from valid_polindrome_II import Solution
+from valid_palindrome_II import Solution
 
 class TestSolution(TestCase):
     def test_validPalindromeIICase1(self):
