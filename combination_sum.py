@@ -24,6 +24,7 @@ class Solution(object):
         """
         dp = [[] for i in xrange(target + 1)]
         dp[0].append([]) # dp[0] must have content, an empty list, i.e. dp[0] = [[]]
+        candidates.sort()
         for i in xrange(1, target + 1):
             for num in candidates:
                 if num > i: break

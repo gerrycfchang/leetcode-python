@@ -9,6 +9,12 @@ class TestSolution(TestCase):
         exp = [[2,2,3],[7]]
         self.assertListEqual(sol.combinationSum(nums, 7), exp)
 
+    def test_combinationSumIVCase2(self):
+        sol = Solution()
+        nums = [8, 7, 4, 3]
+        exp = [[3,4,4],[3,8],[4,7]]
+        self.assertListEqual(sol.combinationSum(nums, 11), exp)
+
     
 if __name__ == '__main__':
     unittest.main()
