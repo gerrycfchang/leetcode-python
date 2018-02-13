@@ -70,5 +70,29 @@ class TestSolution(TestCase):
 
         self.assertEqual(sol.kthSmallest(root, 1), 1)
 
+    def test_kthSmallestBinTreeCase5(self):
+        sol = Solution()
+        """
+                Given binary tree [2, 1],
+
+                    2
+                   / \
+                  1   8
+                     / \
+                    6   12
+                """
+
+        root = TreeNode(2)
+        node1 = TreeNode(1)
+        node2 = TreeNode(8)
+        node3 = TreeNode(6)
+        node4 = TreeNode(12)
+        root.left = node1
+        root.right = node2
+        node2.left = node3
+        node2.right = node4
+
+        self.assertEqual(sol.kthSmallest(root, 3), 6)
+
 if __name__ == '__main__':
     unittest.main()
