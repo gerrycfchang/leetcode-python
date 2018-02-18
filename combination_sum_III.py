@@ -18,8 +18,10 @@ class Solution(object):
         return Solution.ret
 
 
-    def dfs(self, k, n, start, valuelist):
-        if k == 0 and n == 0 and valuelist not in Solution.ret:
+    def dfs(self, k, taget, start, valuelist):
+        if k == 0 and taget == 0 and valuelist not in Solution.ret:
             Solution.ret.append(valuelist)
         for i in range (start, 10):
-            self.dfs(k - 1, n - i, i + 1, valuelist + [i])
+            if taget < i:
+                return
+            self.dfs(k - 1, taget - i, i + 1, valuelist + [i])
