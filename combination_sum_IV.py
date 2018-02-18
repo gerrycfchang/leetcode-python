@@ -28,6 +28,7 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
+        ### Solution 1
         dp = [0 for i in range(target+1)]
         dp[0] = 1
         nums.sort()
@@ -36,4 +37,21 @@ class Solution(object):
                 if num > i : break
                 dp[i] = dp[i] + dp[i-num]
         return dp[target]
+    
+    """
+
+        ### Solution 2
+        Solution.sum = 0
+        self.dfs(sorted(nums), target)
+        return Solution.sum
+
+    def dfs(self, nums, target):
+        if target == 0:
+            Solution.sum += 1
+        
+        for i in range(len(nums)):
+            if target < nums[i]:
+                return
+            self.dfs(nums, target - nums[i])
+    """
         
