@@ -21,7 +21,7 @@ class Solution(object):
         :type candidates: List[int]
         :type target: int
         :rtype: List[List[int]]
-        """
+        ### Solution 1
         dp = [[] for i in xrange(target + 1)]
         dp[0].append([]) # dp[0] must have content, an empty list, i.e. dp[0] = [[]]
         candidates.sort()
@@ -33,4 +33,17 @@ class Solution(object):
                     if tmp not in dp[i]:
                         dp[i].append(tmp)
         return dp[target]
-        
+        """
+        Solution.ret = []
+        self.dfs(sorted(candidates), target, [])
+        return Solution.ret
+
+
+    def dfs(self, candidates, target, valuelist):
+        if target == 0 and sorted(valuelist) not in sorted(Solution.ret):
+            Solution.ret.append(valuelist)
+
+        for i in range(len(candidates)):
+            if target < candidates[i]:
+                return
+            self.dfs(candidates, target - candidates[i], valuelist + [candidates[i]])
