@@ -21,6 +21,28 @@ class Solution(object):
                         start = i
                         maxlen = j-i+1
         return s[start:start+maxlen]
+    
+    def arroundCenterLongestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        longestStr = ''
+        for i in range(len(s)):
+            temp = self.helper(s, i, i)
+            if len(temp) > len(longestStr):
+                longestStr = temp
+            
+            temp = self.helper(s, i, i+1)
+            if len(temp) > len(longestStr):
+                longestStr = temp
+        return longestStr
+
+    def helper(self, s, start, end):
+        while start >=0 and end < len(s) and s[start]==s[end]:
+            start -= 1
+            end += 1
+        return s[start+1:end]
                     
 
 if __name__ == '__main__':
@@ -47,5 +69,8 @@ if __name__ == '__main__':
     "ababababababababababababababababababababababababababababab"
     "ababababababababababababababababababababababababababababab"
     "abababababababababababababa")
-    reStr = sol.longestPalindrome(longestStr)
-    assert  reStr == longestStr
+    #reStr = sol.longestPalindrome(longestStr)
+    #assert  reStr == longestStr
+
+    assert sol.arroundCenterLongestPalindrome('abadcaacbddd') == 'caac'
+    assert sol.arroundCenterLongestPalindrome(longestStr) == longestStr
