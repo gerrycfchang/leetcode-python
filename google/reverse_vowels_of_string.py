@@ -36,4 +36,8 @@ class Solution(object):
 
         return "".join(vlist)
 
+if __name__ == '__main__':
+    sol = Solution()
+    assert sol.reverseVowels('hello') == 'holle'
+    assert sol.reverseVowels('aA') == 'Aa'
 

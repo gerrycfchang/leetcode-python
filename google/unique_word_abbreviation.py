@@ -78,3 +78,22 @@ class ValidWordAbbr(object):
 # vwa = ValidWordAbbr(dictionary)
 # vwa.isUnique("word")
 # vwa.isUnique("anotherWord")
+
+if __name__ == '__main__':
+    # case 1
+    dictionary = ["deer", "door", "cake", "card"]
+    vwa = ValidWordAbbr(dictionary)
+    assert (vwa.isUnique("dear") == False)
+    assert (vwa.isUnique("cart") == True)
+    assert (vwa.isUnique("cane") == False)
+    assert (vwa.isUnique("make") == True)
+
+    # case 2
+    dictionary = ["door", "door"]
+    vwa = ValidWordAbbr(dictionary)
+    assert (vwa.isUnique("door") == True)
+
+    # case 3
+    dictionary = ["dear", "door"]
+    vwa = ValidWordAbbr(dictionary)
+    assert (vwa.isUnique("door") == False)

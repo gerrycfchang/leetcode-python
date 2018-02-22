@@ -30,4 +30,12 @@ class Solution(object):
                 index += 1
         return index == len(word)
 
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert (sol.validWordAbbreviation('word','w2d') == True)
+    assert (sol.validWordAbbreviation('word', '3d') == True)
+    assert (sol.validWordAbbreviation('word', '10d') == False)
+    assert (sol.validWordAbbreviation('word', 'w1xd') == False)
+
 

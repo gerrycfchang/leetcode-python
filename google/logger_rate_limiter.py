@@ -33,3 +33,25 @@ class Logger(object):
 # Your Logger object will be instantiated and called as such:
 # obj = Logger()
 # param_1 = obj.shouldPrintMessage(timestamp,message)
+
+if __name__ == '__main__':
+    logger = Logger()
+
+    result = logger.shouldPrintMessage(1, "foo")
+    assert result == True
+
+    result = logger.shouldPrintMessage(2, "bar")
+    assert result == True
+
+    result = logger.shouldPrintMessage(3, "foo")
+    assert result == False
+
+    result = logger.shouldPrintMessage(8, "bar")
+    assert result == False
+
+    result = logger.shouldPrintMessage(10, "foo")
+    assert result == False
+
+    result = logger.shouldPrintMessage(11, "foo")
+    assert result == True
+

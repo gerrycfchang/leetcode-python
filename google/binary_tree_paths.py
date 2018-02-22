@@ -42,3 +42,38 @@ class Solution(object):
 
         findNodePath(root, str(root.value))
         return reslist
+
+import sys
+sys.path.append('../')
+from leetCodeUtil import TreeNode
+if __name__ == '__main__':
+    """
+        Given binary tree [3,9,20,null,null,15,7],
+
+            1
+           / \
+          2   3
+            \
+            5
+        """
+    ## case 1
+    root = TreeNode(1)
+    node1 = TreeNode(2)
+    node2 = TreeNode(3)
+    node3 = TreeNode(5)
+
+    root.left = node1
+    root.right = node2
+    node1.right = node3
+    sol = Solution()
+    result = sol.binaryTreePaths(root)
+    exp = ["1->2->5", "1->3"]
+
+    result.sort()
+    exp.sort()
+    assert result==exp
+
+    ## case 2
+    root = None
+    result = sol.binaryTreePaths(root)
+    assert result==[]

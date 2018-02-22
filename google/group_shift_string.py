@@ -47,3 +47,33 @@ class Solution:
 
         return rstr
 
+if __name__ == '__main__':
+    sol = Solution()
+
+    ## case 1
+    str = ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]
+
+    result = sol.groupStrings(str)
+    result.sort()
+
+    exp = [
+      ["abc","bcd","xyz"],
+      ["az","ba"],
+      ["acef"],
+      ["a","z"]
+    ]
+    exp.sort()
+    assert result == exp
+
+    ## case 2
+    str = ["abc", "cbd", "a", "z"]
+
+    result = sol.groupStrings(str)
+    result.sort()
+    exp = [
+      ["abc"],
+        ["cbd"],
+      ["a","z"]
+    ]
+    exp.sort()
+    assert result == exp

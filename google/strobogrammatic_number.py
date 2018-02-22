@@ -31,3 +31,19 @@ class Solution(object):
 
         if x == stroNum:
             return True
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.isStrobogrammatic(13) == False)
+    assert (sol.isStrobogrammatic(16791) == False)
+    assert (sol.isStrobogrammatic(69) == True)
+    assert (sol.isStrobogrammatic(88) == True)
+    assert (sol.isStrobogrammatic(8008) == True)
+    assert (sol.isStrobogrammatic(8698) == True)
+    assert (sol.isStrobogrammatic(1691) == True)
+    assert (sol.isStrobogrammatic(818) == True)
+    assert (sol.isStrobogrammatic(916) == True)
+    assert (sol.isStrobogrammatic(986) == True)
+    assert (sol.isStrobogrammatic(101) == True)
+    assert (sol.isStrobogrammatic(609) == True)
+    assert(sol.isStrobogrammatic(8) == True)

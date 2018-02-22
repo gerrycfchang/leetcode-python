@@ -43,3 +43,8 @@ class Solution(object):
         return sum < 2
         """
 
+if __name__ == '__main__':
+    sol = Solution()
+    assert sol.canPermutePalindrome('code') == False
+    assert sol.canPermutePalindrome('aab') == True
+    assert sol.canPermutePalindrome('carerac') == True

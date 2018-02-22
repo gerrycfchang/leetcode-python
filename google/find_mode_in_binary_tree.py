@@ -48,3 +48,27 @@ class Solution(object):
         self.inorder(node.left, c)
         c[node.value] += 1
         self.inorder(node.right, c)
+
+import sys
+sys.path.append('../')
+from leetCodeUtil import TreeNode
+if __name__ == '__main__':
+    ### Test case 1
+    """
+    Given BST [1,null,2,2],
+       1
+        \
+         2
+        /
+       2
+
+    """
+    root = TreeNode(1)
+    node1 = TreeNode(2)
+    node2 = TreeNode(2)
+
+    root.right = node1
+    node1.left = node2
+    sol = Solution()
+        
+    assert sol.findMode(root) == [2]
