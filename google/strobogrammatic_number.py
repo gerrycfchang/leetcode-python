@@ -25,7 +25,7 @@ class Solution(object):
 
         if stroNum > x:
             lastNumber = stroNum % 10
-            if not (lastNumber in validNumber):
+            if lastNumber not in [0, 1, 8]:
                 return False
             stroNum /= 10
 
@@ -47,3 +47,4 @@ if __name__ == '__main__':
     assert (sol.isStrobogrammatic(101) == True)
     assert (sol.isStrobogrammatic(609) == True)
     assert(sol.isStrobogrammatic(8) == True)
+    assert(sol.isStrobogrammatic(669) == False)
