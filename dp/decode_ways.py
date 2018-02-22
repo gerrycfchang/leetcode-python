@@ -37,3 +37,4 @@ if __name__ == '__main__':
     assert sol.numDecodings('1') == 1
     assert sol.numDecodings('10') == 1
     assert sol.numDecodings('11') == 2
+    assert sol.numDecodings('101') == 1
