@@ -37,3 +37,7 @@ class Solution(object):
             result.append(str(digit % 10))
 
         return "".join(result[::-1])
+if __name__ == '__main__':
+    sol = Solution()
+    assert sol.addStrings('0','0') == '0'
+    assert sol.addStrings('1', '9') == '10'
