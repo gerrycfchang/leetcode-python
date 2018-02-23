@@ -24,3 +24,14 @@ class Solution(object):
                     return True
         return False
 
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.canWin('-++-++-') == False)
+
+    assert (sol.canWin('-++-++-++') == True)
+
+    assert (sol.canWin('-++++-') == True)
+
+    assert (sol.canWin('') == False)
+
+    assert (sol.canWin('-+++--++') == False)

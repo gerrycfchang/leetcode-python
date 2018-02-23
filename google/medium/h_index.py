@@ -35,3 +35,12 @@ class Solution(object):
                 hindex = i
                 return hindex
         return len(citations)
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert (sol.hIndex([3, 0, 6, 1, 5]) == 3)
+    assert (sol.hIndex([]) == 0)
+    assert (sol.hIndex([0]) == 0)
+    assert (sol.hIndex([100]) == 1)
+    assert (sol.hIndex([0, 1]) == 1)

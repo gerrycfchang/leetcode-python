@@ -43,3 +43,14 @@ class Solution(object):
 
 
         return "".join(res)[:length-k].lstrip('0') or '0'
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert (sol.removeKdigits('1432219',3) == '1219')
+    assert (sol.removeKdigits('123456',3) == '123')
+    assert (sol.removeKdigits('10200',1) == '200')
+    assert (sol.removeKdigits('10',2) == '0')
+    assert (sol.removeKdigits('10',1) == '0')
+    assert (sol.removeKdigits('1173',2) == '11')
+    assert (sol.removeKdigits('1234567890',9) == '0')

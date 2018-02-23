@@ -50,3 +50,11 @@ class Solution(object):
             return zero_indegree[::-1]
         else:
             return []
+
+if __name__ == '__main__':
+    sol = Solution()
+    courses = [[1,0]]
+    assert (sol.findOrder(2, courses) == [0, 1])
+
+    courses = [[1,0],[2,0],[3,1],[3,2]]
+    assert (sol.findOrder(4, courses) == [0,2,1,3])

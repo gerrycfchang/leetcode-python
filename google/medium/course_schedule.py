@@ -42,7 +42,19 @@ class Solution(object):
             i += 1
         return len(zero_indegree) == numCourses
 
+if __name__ == '__main__':
+    sol = Solution()
+    courses = [[1,0]]
+    assert (sol.canFinish(2, courses) == True)
 
+    courses = [[0, 1]]
+    assert (sol.canFinish(2, courses) == True)
+
+    courses = [[1, 0],[0, 1]]
+    assert (sol.canFinish(2, courses) == False)
+    
+    courses = [[1, 0],[0, 4],[4, 3], [3, 2], [4, 2]]
+    assert (sol.canFinish(5, courses) == True)        
 
 
 

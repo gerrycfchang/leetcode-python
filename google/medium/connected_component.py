@@ -21,5 +21,15 @@ class Solution(object):
 
         return edgeNum
 
+if __name__ == '__main__':
+    sol = Solution()
+    edges = [[0, 1], [1, 2], [3, 4]]
+    assert (sol.countComponents(5, edges) == 2)
+
+    edges = [[0, 1], [1, 2], [2, 3], [3, 4]]
+    assert (sol.countComponents(5, edges) == 1)
+
+    edges = [[0, 1], [2, 3], [4, 5], [6, 7]]
+    assert (sol.countComponents(8, edges) == 4)
 
 

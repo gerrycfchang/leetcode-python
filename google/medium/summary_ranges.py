@@ -1,4 +1,7 @@
 """
+Given a sorted integer array without duplicates, return the summary of its ranges.
+
+For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].
 
 """
 
@@ -28,3 +31,14 @@ class Solution(object):
                 item = str(rlist[i][0])
             result.append(item)
         return result
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    nums = [0,1,2,4,5,7]
+    exp = ["0->2","4->5","7"]
+    assert(sol.summaryRanges(nums) == exp)
+
+    nums = [0,2,3,4,6,8,9]
+    exp = ["0","2->4","6","8->9"]
+    assert(sol.summaryRanges(nums) == exp)
