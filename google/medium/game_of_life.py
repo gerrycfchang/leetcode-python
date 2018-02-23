@@ -41,3 +41,24 @@ class Solution(object):
 
 if __name__ == '__main__':
     sol = Solution()
+
+    res = [[]]
+    sol.gameOfLife(res)
+    exp = [[]]
+    assert (res == exp)
+
+    res = [[1]]
+    sol.gameOfLife(res)
+    exp = [[0]]
+    assert (res == exp)
+
+    res = [[1, 1], [1, 0]]
+    sol.gameOfLife(res)
+    exp = [[1, 1], [1, 1]]
+    assert (res == exp)
+
+    res = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+    sol.gameOfLife(res)
+    exp = [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
+    assert (res == exp)
+    
