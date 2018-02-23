@@ -54,4 +54,19 @@ class Solution(object):
                 return
             self.dfs(nums, target - nums[i])
     """
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    nums = [1,2,3]
+    assert(sol.combinationSum4(nums, 4) == 7)
+
+    nums = [2, 3, 6, 7]
+    assert(sol.combinationSum4(nums, 7) == 4)
+
+    nums = [3, 1, 2, 4]
+    assert(sol.combinationSum4(nums, 4) == 8)
+
+    nums = [4, 2, 1]
+    assert(sol.combinationSum4(nums, 32) == 39882198)
         

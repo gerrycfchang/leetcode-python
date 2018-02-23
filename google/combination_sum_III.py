@@ -25,3 +25,18 @@ class Solution(object):
             if taget < i:
                 return
             self.dfs(k - 1, taget - i, i + 1, valuelist + [i])
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    exp = [[1,2,4]]
+    assert(sol.combinationSumIII(3, 7) == exp)
+
+    exp = [[1,2,6], [1,3,5], [2,3,4]]
+    assert(sol.combinationSumIII(3, 9) == exp)
+
+    exp = []
+    assert(sol.combinationSumIII(2, 18) == exp)
+
+    exp = [[1,5,9],[1,6,8],[2,4,9],[2,5,8],[2,6,7],[3,4,8],[3,5,7],[4,5,6]]
+    assert(sol.combinationSumIII(3, 15) == exp)

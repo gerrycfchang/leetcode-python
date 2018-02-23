@@ -47,3 +47,14 @@ class Solution(object):
             if target < candidates[i]:
                 return
             self.dfs(candidates, target - candidates[i], valuelist + [candidates[i]])
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    nums = [2,3,6,7]
+    exp = [[2,2,3],[7]]
+    assert (sol.combinationSum(nums, 7) == exp)
+
+    nums = [8, 7, 4, 3]
+    exp = [[3,4,4],[3,8],[4,7]]
+    assert (sol.combinationSum(nums, 11) == exp)
