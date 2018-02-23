@@ -46,3 +46,9 @@ class Solution(object):
                 i += 1
                 j += 1
         return True
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert (sol.isToeplitzMatrix([[1,2,3,4],[5,1,2,3],[9,5,1,2]]) == True)
+    assert (sol.isToeplitzMatrix([[1,2],[2,2]]) == False)

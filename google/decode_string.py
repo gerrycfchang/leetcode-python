@@ -44,5 +44,15 @@ class Solution(object):
         index[0] = i - 1
         return int(numStr)
 
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert(sol.decompress('a3[b2[c1[d]]]e') == 'abcdcdbcdcdbcdcde')
+    assert(sol.decompress('3[a]2[bc]') == 'aaabcbc')
+    assert(sol.decompress('3[a2[c]]') == 'accaccacc')
+    assert(sol.decompress('2[abc]3[cd]ef') == 'abcabccdcdcdef')
+    assert(sol.decompress('abcdef') == 'abcdef')
+    assert(sol.decompress('10[ab]') == 'abababababababababab')
+
 
 

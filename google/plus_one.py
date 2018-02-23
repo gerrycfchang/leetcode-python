@@ -30,3 +30,15 @@ class Solution(object):
             self.calculateNum(digits, index - 1)
 
         return
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    exp = [1]
+    assert (sol.plusOne([0]) == exp)
+
+    exp = [1,0]
+    assert(sol.plusOne([9]) == exp)
+
+    exp = [1,0,0]
+    assert (sol.plusOne([9,9]) == exp)
