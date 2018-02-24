@@ -42,3 +42,57 @@ class InsertionSort(object):
                 num[j+1] = num[j]
                 j -= 1
             num[j+1] = key
+
+class MergeSort(object):
+    def sort(self, num, front, end):
+        if front < end:
+            mid = (front + end) / 2
+            self.sort(num, front, mid)
+            self.sort(num, mid + 1, end)
+            self.merge(num, front, mid, end)
+    
+    def merge(self, num, front, mid, end):
+        leftList  = num[front:mid+1]
+        rightList = num[mid+1:end+1]
+        leftList.append(float('inf'))
+        rightList.append(float('inf'))
+
+        leftIndex, rightIndex = 0, 0
+        for i in range (front, end+1):
+            if leftList[leftIndex] < rightList[rightIndex]:
+                num[i] = leftList[leftIndex]
+                leftIndex += 1
+            else:
+                num[i] = rightList[rightIndex]
+                rightIndex += 1
+        
+
+if __name__ == '__main__':
+    obj = BubbleSort()
+    nums = [4, 2, 6, 1]
+    obj.sort(nums)
+    assert (nums == [1, 2, 4, 6])
+
+    nums = [4, 24, 6, 1, 17, 3, 89, 43, 45]
+    obj.sort(nums)
+    assert (nums == [1, 3, 4, 6, 17, 24, 43, 45, 89])
+
+    q = QuickSort()
+    nums = [4, 2, 6, 1, 7, 3]
+    q.sort(nums, 0, 5)
+    assert (nums == [1, 2, 3, 4, 6, 7])
+
+    nums = [4, 24, 6, 1, 17, 3, 89, 43, 45]
+    q.sort(nums, 0, 8)
+    assert (nums == [1, 3, 4, 6, 17, 24, 43, 45, 89])
+
+    isort = InsertionSort()
+    nums = [4, 2, 6, 1, 7, 3]
+    isort.sort(nums)
+    assert (nums == [1, 2, 3, 4, 6, 7])
+
+    m = MergeSort()
+    nums = [4, 2, 6, 1, 7, 3]
+    m.sort(nums, 0, 5) 
+    assert nums == [1, 2, 3, 4, 6, 7]
+
