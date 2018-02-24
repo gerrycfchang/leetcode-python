@@ -1,64 +1,49 @@
 """
-Given a 2D matrix matrix, find the sum of the elements inside the rectangle defined by
+Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 
-its upper left corner (row1, col1) and lower right corner (row2, col2).
+Example:
+Given nums = [-2, 0, 3, -5, 2, -1]
 
+sumRange(0, 2) -> 1
+sumRange(2, 5) -> -1
+sumRange(0, 5) -> -3
+Note:
 """
+class NumArray(object):
 
-
-class NumMatrix(object):
-    def __init__(self, matrix):
+    def __init__(self, nums):
         """
-        initialize your data structure here.
-        :type matrix: List[List[int]]
+        :type nums: List[int]
         """
-        ##initiate a sum array here
-        if len(matrix) == 0: return
-        m, n = len(matrix) + 1, len(matrix[0]) + 1
-        self.sums = [[0 for j in range (n)] for i in range (m)]
+        if len(nums) == 0: return None
+        self.sums = [0 for _ in range(len(nums))]
+        self.sums[0] = nums[0]
+        for i in range (1, len(nums)):
+            self.sums[i] = self.sums[i-1] + nums[i]
+        
 
-        for i in range (1, m):
-            for j in range (1, n):
-                self.sums[i][j] = self.sums[i][j-1] + matrix[i-1][j-1]
-
-        for i in range (1, m):
-            for j in range (1, n):
-                self.sums[i][j] += self.sums[i-1][j]
-
-    def sumRegion(self, row1, col1, row2, col2):
+    def sumRange(self, i, j):
         """
-        sum of elements matrix[(row1,col1)..(row2,col2)], inclusive.
-        :type row1: int
-        :type col1: int
-        :type row2: int
-        :type col2: int
+        :type i: int
+        :type j: int
         :rtype: int
         """
-        return self.sums[row2 + 1][col2 + 1] + self.sums[row1][col1] \
-               - self.sums[row1][col2 + 1] - self.sums[row2 + 1][col1]
+        if i > 0 and j > 0:
+            return self.sums[j] - self.sums[i-1]
+        else:
+            return self.sums[j]
+        
 
 
-
-        # Your NumMatrix object will be instantiated and called as such:
-        # obj = NumMatrix(matrix)
-        # param_1 = obj.sumRegion(row1,col1,row2,col2)
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(i,j)
 
 
 if __name__ == '__main__':
-
-    """
-    input = matrix = [
-        [3, 0, 1, 4, 2],
-        [5, 6, 3, 2, 1],
-        [1, 2, 0, 1, 5],
-        [4, 1, 0, 1, 7],
-        [1, 0, 3, 0, 5]
-    ]
-    """
-    input = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
-    matrix = NumMatrix(input)
-    assert matrix.sumRegion(1, 1, 2, 2) == 28
+    
+    nums = [-2, 0, 3, -5, 2, -1]
+    na = NumArray(nums)
+    assert na.sumRange(0, 2) == 1
+    assert na.sumRange(2, 5) == -1
+    assert na.sumRange(0, 5) == -3
