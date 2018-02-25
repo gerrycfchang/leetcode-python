@@ -101,7 +101,28 @@ class HeapSort(object):
             num[idx], num[largest] = num[largest], num[idx]
             self.maxHeapify(nums, largest, length)
 
-        
+class RadixSort(object):
+    def sort(self, num, d):
+        length = len(num)
+        temp = [[0 for _ in range(length)] for _ in range(10)]
+        order = [0 for _ in range(10)]
+        k, n = 0, 1
+        while n <= d:
+            for i in range(length):
+                lsd = (num[i]/n) % 10
+                temp[lsd][order[lsd]] = num[i]
+                order[lsd] += 1
+
+            for i in range(10):
+                if order[i] != 0:
+                    for j in range (order[i]):
+                        num[k] = temp[i][j]
+                        k += 1
+                order[i] = 0
+                
+            k = 0
+            n *= 10
+
 
 if __name__ == '__main__':
     obj = BubbleSort()
@@ -141,5 +162,15 @@ if __name__ == '__main__':
     nums = [4, 2, 6, 1, 7, 3]
     h.sort(nums) 
     assert nums == [1, 2, 3, 4, 6, 7]
+
+    r = RadixSort()
+    nums = [4, 2, 6, 1, 7, 3]
+    r.sort(nums, 1) 
+    assert nums == [1, 2, 3, 4, 6, 7]
+
+    nums = [73, 22, 93, 43, 55, 14, 28, 65, 39, 81, 33, 100]
+    r.sort(nums, 100) 
+    assert nums == [14, 22, 28, 33, 39, 43, 55, 65, 73, 81, 93, 100]
+
 
 
