@@ -1,53 +1,51 @@
-"""
-Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k, l) there are such that A[i] + B[j] + C[k] + D[l] is zero.
+"""Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
 
-To make problem a bit easier, all A, B, C, D have same length of N where 0 <= N <= 500. All integers are in the range of -228 to 228 - 1 and the result is guaranteed to be at most 231 - 1.
+Note: The solution set must not contain duplicate quadruplets.
 
-Example:
+For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.
 
-Input:
-A = [ 1, 2]
-B = [-2,-1]
-C = [-1, 2]
-D = [ 0, 2]
-
-Output:
-2
-
-Explanation:
-The two tuples are:
-1. (0, 0, 0, 1) -> A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
-2. (1, 1, 0, 0) -> A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0
-
+A solution set is:
+[
+  [-1,  0, 0, 1],
+  [-2, -1, 1, 2],
+  [-2,  0, 0, 2]
+]
 """
 class Solution(object):
-    def fourSumCount(self, A, B, C, D):
+    def fourSum(self, nums, target):
         """
-        :type A: List[int]
-        :type B: List[int]
-        :type C: List[int]
-        :type D: List[int]
-        :rtype: int
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
         """
-        from collections import Counter
-        cnt = Counter(a+b for a in A for b in B)
-        count = 0
-        for c in C:
-            for d in D:
-                target = 0-(c+d)
-                count += cnt[target]
-        return count
-
+        if len(nums) < 4: return []
+        nums.sort()
+        dict, res = {}, set()
+        for i in range (len(nums)):
+            for j in range(i+1, len(nums)):
+                if (nums[i] + nums[j]) not in dict:
+                    dict[nums[i] + nums[j]] = [(i,j)]
+                else:
+                    dict[nums[i] + nums[j]].append([i,j])
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums) - 2):
+                t = target-(nums[i]+nums[j])
+                if t in dict:
+                    for k in dict[t]:
+                        if k[0] > j:
+                            res.add((nums[i], nums[j], nums[k[0]], nums[k[1]]))
+                        
+        return [list(i) for i in res]
+                    
 if __name__ == '__main__':
+    nums = [1,0,-1,0,-2,2]
     sol = Solution()
-    A = [ 1, 2]
-    B = [-2,-1]
-    C = [-1, 2]
-    D = [ 0, 2]
-    assert sol.fourSumCount(A, B, C, D) == 2
-
-    A = [1,2]
-    B = [-2,-1]
-    C = [-1,2]
-    D = [0,2]
-    assert sol.fourSumCount(A, B, C, D) == 2
+    exp = [
+        [-1,  0, 0, 1],
+        [-2, -1, 1, 2],
+        [-2,  0, 0, 2]
+    ]
+    res = sol.fourSum(nums, 0)
+    res.sort()
+    exp.sort()
+    assert res == exp
