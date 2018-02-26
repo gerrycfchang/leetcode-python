@@ -35,18 +35,13 @@ class Solution(object):
             for j in range (len(coins)):
                 if coins[j] <= i:
                     dp[i] = min(dp[i], dp[i - coins[j]] + 1)
-        print dp[amount]
-        if dp[amount] > amount:
-            return -1
-        else:
-            return dp[amount]
-
+        return -1 if dp[amount] > amount else dp[amount]
 
 
 if __name__ == '__main__':
     sol = Solution()
     coins = [1]
-    assert sol.coinChange(coins, 2) == 2
+    assert sol.coinChangeSol(coins, 2) == 2
     assert sol.coinChange([1], 0) == 0
     assert sol.coinChange([2], 1) == -1
     assert sol.coinChangeSol([3,7,405,436], 8839) == 25
