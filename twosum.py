@@ -19,12 +19,22 @@ class Solution(object):
             rest = abs(target - nums[x])
             print rest
             if rest in dic:
-                return result[] = [x, dic[rest]]
+                return [x, dic[rest]]
+    
+    def twoSumSol(self, nums, target):
+        from collections import Counter
+        c = Counter()
+        for i in range (len(nums)):
+            part = target - nums[i]
+            if part in c:
+                return [c[part], i]
+            else:
+                c[nums[i]] = i        
+        return None
 
 
 if __name__ == '__main__':
     nums = [0, 16, 11, 3]
     target = 3
     test = Solution()
-    rlist = test.twoSum(nums, target)
-    print rlist
+    assert test.twoSumSol(nums, target) == [0,3]
