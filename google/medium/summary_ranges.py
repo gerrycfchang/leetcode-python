@@ -21,16 +21,13 @@ class Solution(object):
             while i != len(nums) - 1 and nums[i + 1] - nums[i] == 1:
                 res.append(nums[i + 1])
                 i += 1
-            rlist.append(res)
-            i += 1
-
-        for i in range(len(rlist)):
-            if len(rlist[i]) > 1:
-                item = str(rlist[i][0]) + "->" + str(rlist[i][-1])
+            if len(res) > 1:
+                rlist.append(str(res[0]) + '->' + str(res[-1]))
             else:
-                item = str(rlist[i][0])
-            result.append(item)
-        return result
+                rlist.append(str(res[0]))
+            i += 1
+        return rlist
+
 
 if __name__ == '__main__':
     sol = Solution()
