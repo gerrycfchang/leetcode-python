@@ -9,6 +9,18 @@ Output: index1=1, index2=2
 
 
 class Solution(object):
+    def twoSumSol(self, numbers, target):
+        l, r = 0, len(numbers) - 1
+        while l < r:
+            total = numbers[l] + numbers[r]
+            if total > target:
+                r -= 1
+            elif total < target:
+                l += 1
+            elif total == target:
+                return [l+1, r+1]
+        return None
+
     def twoSum(self, numbers, target):
         """
         :type numbers: List[int]
@@ -31,5 +43,7 @@ if __name__ == '__main__':
     nums = [5, 10, 13, 30]
     target = 23
     test = Solution()
-    rlist = test.twoSum(nums, target)
-    print rlist
+    assert test.twoSum(nums, target) == [2, 3]
+
+    assert test.twoSumSol(nums, target) == [2, 3]
+    
