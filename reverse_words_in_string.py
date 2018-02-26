@@ -22,3 +22,28 @@ class Solution(object):
 
         return str.strip(' ')
 
+    def reverseWordsSol(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        if not s or len(s.strip(' ')) == 0: return ''
+        slist = s.split()
+        slist = slist[::-1]
+        return ' '.join(slist)
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    inp = "the sky is blue"
+    exp = 'blue is sky the'
+    assert (sol.reverseWordsSol(inp) == exp)
+
+    inp = " a"
+    exp = 'a'
+    assert (sol.reverseWordsSol(inp) == exp)
+
+    inp = " "
+    exp = ''
+    assert (sol.reverseWordsSol(inp) == exp)
+
