@@ -12,7 +12,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[str]
         """
-        rlist, result = [], []
+        rlist = []
         if len(nums) == 0: return []
         i = 0
         while i < len(nums):
