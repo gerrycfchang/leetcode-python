@@ -35,3 +35,8 @@ class Solution(object):
                 result = result + (input % 10) ** 2
                 input = input / 10
         return False
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.isHappy(19) == True)
+    assert (sol.isHappy(22) == True)
