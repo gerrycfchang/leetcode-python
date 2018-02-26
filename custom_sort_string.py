@@ -26,14 +26,17 @@ class Solution(object):
         c = Counter(T)
         res1, res2 = [], []
         for i in range(len(S)):
-            tmp = c[S[i]] * S[i]
-            res1.append(tmp)
+            res1.append(c[S[i]] * S[i])
             
         for i in range (len(T)):
             if T[i] not in S:
                 res2.append(T[i])
+
+        #return ''.join(res1) + ''.join(res2)
+
+        return ''.join(c[S[i]] * S[i] for i in range(len(S))) + ''.join(T[i] for i in range(len(T)) if T[i] not in S )
             
-        return ''.join(res1) + ''.join(res2)
+        
 if __name__ == '__main__':
     sol = Solution()
     S = "cba"
