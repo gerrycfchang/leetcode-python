@@ -35,3 +35,9 @@ class Solution(object):
 
         return [x[1] for x in heap]
 
+if __name__ == '__main__':
+    sol = Solution()
+    nums = [3,3,3,2,2,1]
+    assert (sol.topKFrequent(nums, 2) == [2,3])
+
+
