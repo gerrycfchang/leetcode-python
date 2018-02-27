@@ -44,6 +44,29 @@ class Solution(object):
         index[0] = i - 1
         return int(numStr)
 
+    def decodeString(self, str):
+        index = [0]
+        res = self.decode(str, index)
+        return res
+
+    def decode(self, str, index):
+        res = ''
+        while index[0] < len(str) and str[index[0]] != ']':
+            if str[index[0]] < '0' or str[index[0]] > '9':
+                res += str[index[0]]
+                index[0] += 1
+            else:
+                cnt = 0
+                while index[0] < len(str) and str[index[0]] >= '0' and str[index[0]] <= '9':
+                    cnt = cnt * 10 + int(str[index[0]])
+                    index[0] += 1
+                index[0] += 1
+                t = self.decode(str, index)
+                res += t * cnt
+                index[0] += 1
+        return res
+
+
 if __name__ == '__main__':
     sol = Solution()
 
@@ -53,6 +76,8 @@ if __name__ == '__main__':
     assert(sol.decompress('2[abc]3[cd]ef') == 'abcabccdcdcdef')
     assert(sol.decompress('abcdef') == 'abcdef')
     assert(sol.decompress('10[ab]') == 'abababababababababab')
+    assert(sol.decodeString('10[ab]') == 'abababababababababab')
+    assert(sol.decodeString('2[abc]3[cd]ef') == 'abcabccdcdcdef')
 
 
 
