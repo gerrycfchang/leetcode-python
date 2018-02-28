@@ -16,20 +16,18 @@ class Solution(object):
         """
         :type s: str
         :rtype: bool
-
-        rstr = s[::-1]
-        if s == rstr:
+        """
+        
+        if s == s[::-1]:
             return True
         else:
-            for i in range(len(s)):
-                if s[i] != rstr[i]:
-                    ns = s[0:i] + s[i + 1:len(s)]
-                    rns = ns[::-1]
-                    if ns == rns:
-                        return True
+            for i in range(len(s)):                
+                ns = s[0:i] + s[i + 1:len(s)]
+                if ns == ns[::-1]:
+                    return True
             return False
+         
         """
-
         isPalindrome = lambda s: s == s[::-1]
         partilStr = lambda s, x: s[0:x] + s[x+1:]
         head = 0
@@ -41,4 +39,10 @@ class Solution(object):
             head += 1
             tail -= 1
         return True
+        """
 
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert (sol.validPalindrome("aba") == True)
+    assert (sol.validPalindrome("abca") == True)
