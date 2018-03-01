@@ -27,4 +27,10 @@ class Solution(object):
             dp[i] = maxnum
         return dp[n]
         """
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.integerBreak(4) == 4)
+    assert (sol.integerBreak(3) == 2)
+    assert (sol.integerBreak(6) == 9)
         

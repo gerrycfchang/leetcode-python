@@ -14,3 +14,9 @@ class Solution(object):
             n = (n-1) / 26
 
         return result
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.convertToTitle(1) == 'A')
+    assert (sol.convertToTitle(27) == 'AA')
+    assert (sol.convertToTitle(512) == 'SR')

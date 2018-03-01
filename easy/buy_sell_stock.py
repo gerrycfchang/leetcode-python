@@ -33,3 +33,9 @@ class Solution(object):
             else:
                 minprice = prices[i]
         return maxprofit
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.maxProfit([7, 1, 5, 3, 6, 4]) == 5)
+    assert (sol.maxProfit([]) == 0)
+    assert (sol.maxProfit([1, 4, 2]) == 3)

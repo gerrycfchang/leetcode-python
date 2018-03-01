@@ -32,3 +32,8 @@ class Solution(object):
                 result.append(base[i])
                 store[p] = None
         return result
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.intersect([],[]) == [])
+    assert (sol.intersect([1, 2, 2, 3],[2, 2]) == [2, 2])

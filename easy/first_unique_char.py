@@ -27,3 +27,7 @@ class Solution(object):
                     index = s.find(t)
                     break
             return index
+
+if __name__ == "__main__":
+    sol = Solution()
+    assert (sol.firstUniqChar('leetcode') == 0)
