@@ -24,17 +24,16 @@ class Solution(object):
         return list(res)
     
     def permute(self, S, idx, res):
-        #if S == '': return
         if S not in res:
             res.append(S)
         if idx >= len(S) or len(S) == 0: return
-        #for i in range(idx+1, len(S)):
         self.permute(S, idx+1, res)
-        if S[idx].islower():
-            t = S[:idx] + S[idx].upper() + S[idx+1:]
-        else:
-            t = S[:idx] + S[idx].lower() + S[idx+1:]
-        self.permute(t, idx+1, res)
+        if not S[idx].isdigit():
+            if S[idx].islower():
+                t = S[:idx] + S[idx].upper() + S[idx+1:]
+            else:
+                t = S[:idx] + S[idx].lower() + S[idx+1:]
+            self.permute(t, idx+1, res)
         
         
 if __name__ == '__main__':
