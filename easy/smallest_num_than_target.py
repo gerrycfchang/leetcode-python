@@ -20,10 +20,7 @@ class Solution(object):
             if diff > 0:
                 if diff < res:
                     res, idx = diff, i                
-        if diff < 0:
-            return letters[0]
-        else:
-            return letters[idx]
+        return letters[idx]
 
 if __name__ == '__main__':
     sol = Solution()
