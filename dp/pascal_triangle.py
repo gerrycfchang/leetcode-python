@@ -34,3 +34,12 @@ class Solution(object):
                     result[i][j] = result[i - 1][j - 1] + result[i - 1][j]
 
         return result
+
+if __name__ == '__main__':
+    sol = Solution()
+    
+    exp = [[1],[1,1],[1,2,1],[1,3,3,1]]
+    assert (sol.generate(4) == exp)
+
+    exp = [[1]]
+    assert (sol.generate(1) == exp)

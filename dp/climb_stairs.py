@@ -21,5 +21,10 @@ class Solution(object):
         for i in range(3, n + 1):
             value = table[i - 1] + table[i - 2]
             table.append(value)
-
         return table[n]
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.climbStairs(2) == 2)
+    assert (sol.climbStairs(3) == 3)
+    assert (sol.climbStairs(4) == 5)

@@ -17,3 +17,8 @@ class Solution(object):
             result.append(value)
 
         return value
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert (sol.rob([1,1,1]) == 2)
+    assert (sol.rob([]) == 0)
