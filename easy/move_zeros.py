@@ -20,3 +20,12 @@ class Solution(object):
 
   for i in range(p, len(nums)):
    nums[i] = 0
+
+if __name__ == '__main__':
+  sol = Solution()
+
+  nums = [0, 1, 4, 13, 0]
+  exps = [1, 4, 13, 0, 0]
+  sol.moveZeroes(nums)
+
+  assert (nums == exps)

@@ -21,3 +21,9 @@ class Solution(object):
                 length = length + 1
 
         return len(nums)
+
+if __name__ == '__main__':
+    sol = Solution()
+
+    assert(sol.removeElement([2, 3, 3, 4], 3) == 2)
+    assert(sol.removeElement([], 1) == 0)

@@ -21,3 +21,17 @@ class Solution(object):
         for i in range (len(nums) - k):
             nums.append(nums[0])
             nums.remove(nums[0])
+
+if __name__ == '__main__':
+    sol = Solution()
+    nums = [-1]
+    sol.rotate(nums, 2)
+    assert(nums == [-1])
+
+    nums = [1, 2]
+    sol.rotate(nums, 1)
+    assert(nums == [2, 1])
+
+    nums = [1,2,3,4,5,6]
+    sol.rotate(nums, 2)
+    assert(nums == [5,6,1,2,3,4])

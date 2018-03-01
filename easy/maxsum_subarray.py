@@ -35,3 +35,9 @@ class Solution(object):
                 return 0
 
         return maxValue
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert(sol.maxSubArray([-2,1,-3,4,-1,2,1,-5,4]) == 6)
+    assert(sol.maxSubArray([1]) == 1)
+    assert(sol.maxSubArray([-1]) == -1)

@@ -18,3 +18,14 @@ class Solution(object):
                 i = i + 1
 
         return len(nums)
+
+if __name__ == '__main__':
+    sol = Solution()
+    
+    assert(sol.removeDuplicates([1, 1, 2]) == 2)
+    assert(sol.removeDuplicates([1, 1, 2, 2, 3, 4]) == 4)
+    assert(sol.removeDuplicates([1]) == 1)
+    assert(sol.removeDuplicates([1, 2]) == 2)
+    assert(sol.removeDuplicates([]) == 0)
+    assert(sol.removeDuplicates([1, 1]) == 1)
+    assert(sol.removeDuplicates([1, 1, 1]) == 1)

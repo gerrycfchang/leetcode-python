@@ -27,3 +27,11 @@ class Solution(object):
 
         repeatStr = (s + s)[1:-1]
         return repeatStr.find(s) != -1
+
+if __name__ == '__main__':
+    sol = Solution()
+    assert(sol.repeatedSubstringPattern('abab') == True)
+    assert(sol.repeatedSubstringPattern('bcabca') == True)
+    assert(sol.repeatedSubstringPattern('abcabcabcabc') == True)
+    assert(sol.repeatedSubstringPattern('bb') == True)
+    assert(sol.repeatedSubstringPattern('aabaab') == True)
