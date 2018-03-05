@@ -29,8 +29,7 @@ class Solution(object):
         n, queue, res, flip = len(board[0]), [], [], True
         visited = [[False for _ in range(n)] for _ in range(m)]
         for i in range(1, m-1):
-            for j in range(1, n-1):
-                if board[i][j] == 'X': visited[i][j] = True           
+            for j in range(1, n-1):         
                 if board[i][j] == 'O' and not visited[i][j]:
                     flip = True
                     queue.append([i, j])
