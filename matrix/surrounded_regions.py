@@ -51,7 +51,7 @@ class Solution(object):
                         board[pair[0]][pair[1]] = 'X'
                 else:
                     for pair in queue:
-                        visited[pair[0]][pair[b]] = True                        
+                        visited[pair[0]][pair[1]] = True                        
                 visited[i][j] = True
                 del queue[:]
                 del res[:]
