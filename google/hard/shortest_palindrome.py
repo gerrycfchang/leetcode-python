@@ -51,8 +51,6 @@ class Solution(object):
             end += 1
         if start >= 0: return
         return s[end:][::-1] + s
-
-delattr 
                 
 if __name__ == '__main__':
     sol = Solution()
