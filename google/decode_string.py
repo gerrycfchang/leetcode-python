@@ -1,9 +1,23 @@
-"""
+# 394. Decode String 
+#
+# Given an encoded string, return it's decoded string.
+# 
+# The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. 
+# 
+# Note that k is guaranteed to be a positive integer.
+# 
+# You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+# 
+# Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. 
+# 
+# For example, there won't be input like 3a or 2[4].
+# 
+# Examples:
+# 
+# s = "3[a]2[bc]", return "aaabcbc".
+# s = "3[a2[c]]", return "accaccacc".
+# s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 
-Given a compressed string in which a number followed by [] indicate how many times those characters occur, decompress the string
-Eg. : a3[b2[c1[d]]]e will be decompressed as abcdcdbcdcdbcdcde.
-
-"""
 import collections
 
 class Solution(object):
@@ -52,17 +66,19 @@ class Solution(object):
     def decode(self, str, index):
         res = ''
         while index[0] < len(str) and str[index[0]] != ']':
-            if str[index[0]] < '0' or str[index[0]] > '9':
+            if not str[index[0]].isdigit():
                 res += str[index[0]]
                 index[0] += 1
             else:
                 cnt = 0
-                while index[0] < len(str) and str[index[0]] >= '0' and str[index[0]] <= '9':
+                while index[0] < len(str) and str[index[0]].isdigit():
                     cnt = cnt * 10 + int(str[index[0]])
                     index[0] += 1
+                # skip '['
                 index[0] += 1
                 t = self.decode(str, index)
                 res += t * cnt
+                # skip ']'
                 index[0] += 1
         return res
 
