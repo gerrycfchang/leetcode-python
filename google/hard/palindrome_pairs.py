@@ -43,9 +43,11 @@ class Solution(object):
             for j in range(len(word)+1):
                 left  = word[:j]
                 right = word[j:]
+                # candidate | left | right
                 if isPalindrome(left) and right in dict and dict[right] != i:
                     if [dict[right], i] not in res:
                         res.append([dict[right], i])
+                # left | right | candidate
                 if isPalindrome(right) and left in dict and dict[left] != i:
                     if [i, dict[left]] not in res:
                         res.append([i, dict[left]]) 
