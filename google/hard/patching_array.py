@@ -46,3 +46,6 @@ if __name__ == '__main__':
 
     nums = [1,5,10]
     assert sol.minPatches(nums, 20) == 2
+
+    nums = [3,9]
+    assert sol.minPatches(nums, 12) == 3
