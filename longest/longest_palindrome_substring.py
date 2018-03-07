@@ -66,11 +66,18 @@ class Solution(object):
         maxLen, start = 0, -1
         n = len(s)
         dp = [[0 for _ in range(n)] for _ in range(n)]
-        for i in range(n): dp[i][i] = 1
+        p  = [[False for _ in range(n)] for _ in range(n)]
+        for i in range(n): dp[i][i], p[i][i] = 1, True
+        for i in range(n):
+            for j in range(i):
+                p[i][j] = True
         for size in range(2, n + 1):
             for i in range(n - size + 1):
                 j = i + size - 1      
-                if s[i] == s[j] and s[i+1] == s[j-1]:
+                
+                if s[i] == s[j] and p[i+1][j-1]:
+                    p[i][j] = True
+                if p[i][j]:
                     dp[i][j] = dp[i+1][j-1] + 2
                     if dp[i][j] > maxLen:
                         maxLen = j - i + 1
@@ -134,3 +141,4 @@ if __name__ == '__main__':
     assert sol.longestPalindromeDPFromLeft('babad') == 'bab'
     assert sol.longestPalindromeDPFromLeft('abadcaacbddd') == sol.longestPalindromeDPFromRight('abadcaacbddd')
     assert sol.longestPalindromeDPFromLeft('a') == 'a'
+    assert sol.longestPalindromeDPFromLeft("longtimenosee") == 'ee'
