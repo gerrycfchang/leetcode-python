@@ -25,6 +25,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        if s == s[::-1]: return len(s)
         n = len(s)
         dp = [[0 for _ in range(n)] for _ in range(n)]
         for i in range(n-1,-1,-1):
@@ -40,3 +41,4 @@ if __name__ == '__main__':
     sol = Solution()
     assert sol.longestPalindromeSubseq('bbbab') == 4
     assert sol.longestPalindromeSubseq('cbba') == 2
+    assert sol.longestPalindromeSubseq('zzzzzzzzzz') == 10
