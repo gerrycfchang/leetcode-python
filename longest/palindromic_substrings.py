@@ -58,6 +58,7 @@ class Solution(object):
                 # if current string is palindrome
                 if s[i] == s[j] and p[i+1][j-1]:
                     p[i][j] = True     
+                #if s[i] == s[j] and s[i+1] == s[j-1]:
                 if p[i][j]:
                     # Add current palindrome substring ( + 1)
                     # and rest palinrome substring (dp[i][j-1] + dp[i+1][j])
@@ -76,4 +77,5 @@ if __name__ == '__main__':
     assert sol.countSubstringsDP('abc') == 3
     assert sol.countSubstringsDP('aaa') == 6
     assert sol.countSubstringsDP('fdsklf') == 6
+    assert sol.countSubstringsDP("longtimenosee") == 14
     
