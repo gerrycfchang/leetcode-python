@@ -44,7 +44,7 @@ class Solution(object):
         return s[start:start+maxlen]
 
 
-    def longestPalindromeDP(self, s):
+    def longestPalindromeDPFromRight(self, s):
         if len(s) <=1: return s
         maxLen, start = 0, -1
         n = len(s)
@@ -60,6 +60,24 @@ class Solution(object):
                 else:
                     dp[i][j] = max(dp[i+1][j], dp[i][j-1])        
         return s[start:start+maxLen]
+
+    def longestPalindromeDPFromLeft(self,s):
+        if len(s) <=1: return s
+        maxLen, start = 0, -1
+        n = len(s)
+        dp = [[0 for _ in range(n)] for _ in range(n)]
+        for i in range(n): dp[i][i] = 1
+        for size in range(2, n + 1):
+            for i in range(n - size + 1):
+                j = i + size - 1      
+                if s[i] == s[j] and s[i+1] == s[j-1]:
+                    dp[i][j] = dp[i+1][j-1] + 2
+                    if dp[i][j] > maxLen:
+                        maxLen = j - i + 1
+                        start = i
+                else:
+                    dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+        return s[start:start+maxLen] 
     
     def arroundCenterLongestPalindrome(self, s):
         """
@@ -113,6 +131,6 @@ if __name__ == '__main__':
 
     assert sol.arroundCenterLongestPalindrome('abadcaacbddd') == 'caac'
     assert sol.arroundCenterLongestPalindrome(longestStr) == longestStr
-    assert sol.longestPalindromeDP('babad') == 'aba'
-    assert sol.longestPalindromeDP('abadcaacbddd') == 'caac'
-    assert sol.longestPalindromeDP('a') == 'a'
+    assert sol.longestPalindromeDPFromLeft('babad') == 'bab'
+    assert sol.longestPalindromeDPFromLeft('abadcaacbddd') == sol.longestPalindromeDPFromRight('abadcaacbddd')
+    assert sol.longestPalindromeDPFromLeft('a') == 'a'
