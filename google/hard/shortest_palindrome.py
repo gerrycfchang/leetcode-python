@@ -51,6 +51,17 @@ class Solution(object):
             end += 1
         if start >= 0: return
         return s[end:][::-1] + s
+
+    def findMidSol(self, s):
+        end, j = len(s) - 1, 0
+        while j <= end:
+            end = end if j==0 else j-1
+            j = 0
+            for i in range(end, -1, -1):
+                if s[i] == s[j]:
+                    j += 1
+        return s[j:][::-1] + s
+
                 
 if __name__ == '__main__':
     sol = Solution()
@@ -60,4 +71,7 @@ if __name__ == '__main__':
     assert sol.shortestPalindromeSol('aaaa') == sol.shortestPalindrome('aaaa')
     assert sol.shortestPalindromeSol('a') == sol.shortestPalindrome('a')    
     assert sol.shortestPalindromeSol('babbbabbaba') == sol.shortestPalindrome('babbbabbaba')
+    assert sol.sol('aacecaaa') == 'aaacecaaa'
+    assert sol.sol('babbbabbaba') == sol.shortestPalindrome('babbbabbaba')
+    assert sol.sol('a') == 'a'
     
