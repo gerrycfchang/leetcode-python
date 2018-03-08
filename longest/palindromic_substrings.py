@@ -44,9 +44,9 @@ class Solution(object):
         n = len(s)
         dp = [[0 for _ in range(n)] for _ in range(n)]
         p  = [[False for _ in range(n)] for _ in range(n)]
-        for i in range(n): 
-            dp[i][i] = 1
-            p[i][i] = True
+
+        # Initialize the lists
+        for i in range(n): dp[i][i], p[i][i] = 1, True
 
         for i in range(1,n):
             for j in range(i):
@@ -78,4 +78,5 @@ if __name__ == '__main__':
     assert sol.countSubstringsDP('aaa') == 6
     assert sol.countSubstringsDP('fdsklf') == 6
     assert sol.countSubstringsDP("longtimenosee") == 14
+    assert sol.countSubstringsDP('abbbac') == 10
     
