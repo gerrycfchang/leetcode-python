@@ -42,7 +42,7 @@ class Solution(object):
         if not root: return []
         nodeQueue, res, table = [], [], defaultdict(list)
         nodeQueue.append([0, root])
-        while len(nodeQueue) != 0:
+        while len(nodeQueue) > 0:
             pair = nodeQueue.pop(0)
             seq, node = pair[0], pair[1]
             table[seq].append(node.value)
