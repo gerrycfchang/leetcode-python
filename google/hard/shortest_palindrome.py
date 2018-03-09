@@ -71,7 +71,7 @@ if __name__ == '__main__':
     assert sol.shortestPalindromeSol('aaaa') == sol.shortestPalindrome('aaaa')
     assert sol.shortestPalindromeSol('a') == sol.shortestPalindrome('a')    
     assert sol.shortestPalindromeSol('babbbabbaba') == sol.shortestPalindrome('babbbabbaba')
-    assert sol.sol('aacecaaa') == 'aaacecaaa'
-    assert sol.sol('babbbabbaba') == sol.shortestPalindrome('babbbabbaba')
-    assert sol.sol('a') == 'a'
+    assert sol.findMidSol('aacecaaa') == 'aaacecaaa'
+    assert sol.findMidSol('babbbabbaba') == sol.shortestPalindrome('babbbabbaba')
+    assert sol.findMidSol('a') == 'a'
     
