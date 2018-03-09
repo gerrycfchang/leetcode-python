@@ -43,6 +43,7 @@ class Solution(object):
         :rtype: List[int]
         """     
         if len(edges) == 0: return[0]   
+        # Record each edge in set for each node
         adj = [set() for _ in range(n)]
         for i, j in edges:
             adj[i].add(j)
@@ -50,6 +51,7 @@ class Solution(object):
         
         leaves = [ i for i in range(n) if len(adj[i]) == 1]
         newLeaves = []
+        # Start from removing all leave nodes until only 2 nodes left
         while n > 2:
             n -= len(leaves)
             newLeaves = []
