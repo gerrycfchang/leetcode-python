@@ -34,7 +34,7 @@
 #         |
 #         5
 # return [3, 4]
-
+import collections
 class Solution(object):
     def findMinHeightTrees(self, n, edges):
         """
@@ -44,10 +44,10 @@ class Solution(object):
         """     
         if len(edges) == 0: return[0]   
         # Record each edge in set for each node
-        adj = [set() for _ in range(n)]
+        adj = collections.defaultdict(list)
         for i, j in edges:
-            adj[i].add(j)
-            adj[j].add(i)
+            adj[i].append(j)
+            adj[j].append(i)
         
         leaves = [ i for i in range(n) if len(adj[i]) == 1]
         newLeaves = []
