@@ -1,4 +1,3 @@
-
 # 130. Surrounded Regions
 # 
 # Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
@@ -27,6 +26,7 @@ class Solution(object):
         m = len(board)
         if m == 0: return
         n, queue, res, flip = len(board[0]), [], [], True
+        dirs = [[1,0],[-1,0],[0,1],[0,-1]]
         visited = [[False for _ in range(n)] for _ in range(m)]
         for i in range(1, m-1):
             for j in range(1, n-1):         
@@ -40,12 +40,14 @@ class Solution(object):
                         if board[a][b] == 'X':
                             continue
                         res.append([a, b])
-                        if a - 1 >= 0 and not visited[a-1][b] and [a-1, b] not in queue: queue.append([a - 1, b])
-                        if a + 1 < m  and not visited[a+1][b] and [a+1, b] not in queue: queue.append([a + 1, b])
-                        if b - 1 >= 0 and not visited[a][b-1] and [a, b-1] not in queue: queue.append([a, b - 1])
-                        if b + 1 < n  and not visited[a][b+1] and [a, b+1] not in queue: queue.append([a, b + 1])
-                        if (a == 0 or a == m - 1 or b == 0 or b == n - 1):
-                            flip = False                            
+                        for _dir in dirs:
+                            x, y = a, b
+                            x += _dir[0]
+                            y -= _dir[1]
+                            if x >=0 and x<m and y>=0 and y<n and not visited[x][y] and [x, y] not in queue:
+                                queue.append([x, y])
+                            if a == 0 or a == m - 1 or b == 0 or b == n - 1:
+                                flip = False                            
                 if flip == True:
                     for pair in res:
                         board[pair[0]][pair[1]] = 'X'
@@ -63,20 +65,20 @@ class Solution(object):
         """
         flip, res = [True], []
         def dfs(board, i, j, visited, flip):
-            m = len(board)
-            n = len(board[0])
-            if i < 0 or i >=m or j < 0 or j >= n or visited[i][j] or board[i][j] == 'X': return
+            m, n = len(board), len(board[0])
+            dirs = [[1,0],[-1,0],[0,1],[0,-1]]
             visited[i][j] = True
-            res.append([i, j])
-            
+            res.append([i, j])            
             if board[i][j] == 'O' and (i == 0 or i == m - 1 or j == 0 or j == n - 1):
                 flip[0] = False
                 return
             else:
-                if i+1 < m  and not visited[i+1][j] and board[i+1][j] == 'O': dfs(board, i + 1, j, visited, flip)
-                if i-1 >= 0 and not visited[i-1][j] and board[i-1][j] == 'O': dfs(board, i - 1, j, visited, flip)
-                if j+1 < n  and not visited[i][j+1] and board[i][j+1] == 'O': dfs(board, i, j + 1, visited, flip)
-                if j-1 >= 0 and not visited[i][j-1] and board[i][j-1] == 'O': dfs(board, i, j - 1, visited, flip)
+                for _dir in dirs:
+                    x, y = i, j
+                    x += _dir[0]
+                    y -= _dir[1]
+                    if x >=0 and x<m and y>=0 and y<n and not visited[x][y] and board[x][y] == 'O':
+                        dfs(board, x, y, visited, flip)
         
         m = len(board)
         if m == 0: return
@@ -219,7 +221,7 @@ if __name__ == '__main__':
             ["O","O","O","X","O","O","O","O","O"],
             ["O","O","O","X","O","O","O","O","O"],
             ["O","O","O","O","O","X","X","O","O"]]
-    sol.solveLoop(board)
+    sol.solveRecur(board)
     assert board == exp
 
     
