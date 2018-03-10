@@ -30,6 +30,18 @@ class Dijkstra(object):
                         heappush(queue, (path_len + edge_len, w))          
         return visited
 
+class MinSpanningTree(object):
+    def construct(self, start, graph):
+        visited = {key: None for key in graph.keys()}
+        queue = [(0, start)]
+        while queue:
+            path, v = heappop(queue)
+            if visited[v] == None:
+                visited[v] = path
+                for w, edge in graph[v].items():
+                    if visited[w] == None:
+                        heappush(queue, (edge, w))
+        return visited
 
 if __name__ == '__main__':
     graph = {'a': {'b': 14, 'c': 9, 'd': 7},
@@ -46,3 +58,25 @@ if __name__ == '__main__':
 
     path = dij.shortestPathWithPQ('a', graph)
     assert exp == path
+
+    mst = MinSpanningTree()
+    tree = mst.construct('a', graph)
+    exp  = {'a': 0, 'c': 9, 'b': 2, 'e': 9, 'd': 7, 'f': 6}
+    assert exp == tree
+
+    graph = { 'a': {'b': 4, 'h': 8},
+              'b': {'a': 4, 'c': 8, 'h': 11},
+              'c': {'b': 8, 'd': 7, 'f': 4, 'i': 2},
+              'd': {'c': 7, 'e': 9, 'f': 14},
+              'e': {'d': 9, 'f': 10},
+              'f': {'c': 4, 'd': 14, 'e': 10, 'g': 2},
+              'g': {'f': 2, 'h': 1, 'i': 6},
+              'h': {'a': 8, 'b': 11, 'g': 1, 'i': 7},
+              'i': {'c': 2, 'g': 6, 'h': 7}
+            }
+    tree = mst.construct('a', graph)
+    exp  = {'a': 0, 'c': 8, 'b': 4, 'e': 9, 'd': 7, 'g': 2, 'f': 4, 'i': 2, 'h': 1}
+    cost = sum(tree.values())
+    assert exp == tree
+    assert cost == 37
+
