@@ -29,13 +29,14 @@ class Solution(object):
         def dfs(grid, i, j, visited):
             m = len(grid)
             n = len(grid[0])
-            if i < 0 or i >= m or j < 0 or j >= n or visited[i][j] or grid[i][j] == '0': return
             visited[i][j] = True
-            if i + 1 < m and not visited[i + 1][j]  and grid[i+1][j] == '1': dfs(grid, i + 1, j, visited)
-            if i - 1 >= 0 and not visited[i - 1][j] and grid[i-1][j] == '1': dfs(grid, i - 1, j, visited)
-            if j + 1 < n and not visited[i][j + 1]  and grid[i][j+1] == '1': dfs(grid, i, j + 1, visited)
-            if j - 1 >= 0 and not visited[i][j - 1] and grid[i][j-1] == '1': dfs(grid, i, j - 1, visited)
-        
+            dirs = [[1,0],[-1,0],[0,1],[0,-1]]
+            for _dir in dirs:
+                x, y = i, j
+                x += _dir[0]
+                y += _dir[1]
+                if x >=0 and x<m and y>=0 and y< n and not visited[x][y] and grid[x][y] == '1':
+                    dfs(grid, x, y, visited)
         m = len(grid)
         if m == 0: return count
         n = len(grid[0])
@@ -62,4 +63,13 @@ if __name__ == '__main__':
 
     grid = []
     assert sol.numIslands(grid) == 0
+
+    grid = [['1','1','0','0'],
+            ['1','1','0','0'],
+            ['0','0','0','0'],
+            ['0','0','0','1']
+    ]
+    assert sol.numIslands(grid) == 2
+
+
 
