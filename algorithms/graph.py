@@ -1,4 +1,4 @@
-import collections
+from heapq import heappush, heappop
 class Dijkstra(object):
     def shortestPath(self, current, graph):
         inf = float('inf')
@@ -14,8 +14,20 @@ class Dijkstra(object):
             visited[current] = currentDistance
             del unvisited[current]
             if not unvisited: break
-            # get the smallest distance from unvisited
+            # get the smallest distance from unvisited nodes
             current, currentDistance = sorted(unvisited.items(), key = lambda x: x[1])[0]
+        return visited
+    
+    def shortestPathWithPQ(self, current, graph):        
+        visited = {key: None for key in graph.keys()}
+        queue = [(0, current)]
+        while queue:
+            path_len, v = heappop(queue)
+            if visited[v] == None: # v is unvisited
+                visited[v] = path_len
+                for w, edge_len in graph[v].items():
+                    if visited[w] == None:
+                        heappush(queue, (path_len + edge_len, w))          
         return visited
 
 
@@ -31,4 +43,6 @@ if __name__ == '__main__':
     path = dij.shortestPath('a', graph)
     exp  = {'a': 0, 'c': 9, 'b': 11, 'e': 20, 'd': 7, 'f': 20}
     assert exp == path
-    
+
+    path = dij.shortestPathWithPQ('a', graph)
+    assert exp == path
