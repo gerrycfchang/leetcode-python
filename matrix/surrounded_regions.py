@@ -41,9 +41,8 @@ class Solution(object):
                             continue
                         res.append([a, b])
                         for _dir in dirs:
-                            x, y = a, b
-                            x += _dir[0]
-                            y -= _dir[1]
+                            x = a + _dir[0]
+                            y = b + _dir[1]
                             if x >=0 and x<m and y>=0 and y<n and not visited[x][y] and [x, y] not in queue:
                                 queue.append([x, y])
                             if a == 0 or a == m - 1 or b == 0 or b == n - 1:
