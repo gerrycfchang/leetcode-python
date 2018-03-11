@@ -74,9 +74,8 @@ class Solution(object):
                 return
             else:
                 for _dir in dirs:
-                    x, y = i, j
-                    x += _dir[0]
-                    y -= _dir[1]
+                    x = i +_dir[0]
+                    y = j + _dir[1]
                     if x >=0 and x<m and y>=0 and y<n and not visited[x][y] and board[x][y] == 'O':
                         dfs(board, x, y, visited, flip)
         
@@ -86,7 +85,6 @@ class Solution(object):
         visited = [[False for _ in range(n)] for _ in range(m)]
         for i in range(1, m-1):
             for j in range(1, n-1):
-                if board[i][j] == 'X': visited[i][j] = True
                 if not visited[i][j] and board[i][j] == 'O':
                     dfs(board, i, j, visited, flip)
                     if flip[0]:
