@@ -28,15 +28,13 @@ class Solution(object):
         """
         maxArea, localCount = 0, [0]
         def dfs(grid, i, j, visited):
-            m = len(grid)
-            n = len(grid[0])
+            m, n = len(grid), len(grid[0])
+            dirs = [[1, 0],[-1, 0],[0, 1],[0, -1]]
             if i < 0 or i >= m or j < 0 or j >= n or visited[i][j] or grid[i][j] == 0: return
             localCount[0] += 1
             visited[i][j] = True
-            dfs(grid, i - 1, j, visited)
-            dfs(grid, i + 1, j , visited)
-            dfs(grid, i, j - 1, visited)
-            dfs(grid, i, j + 1, visited)
+            for _dir in dirs:
+                dfs(grid, i + _dir[0], j + _dir[1], visited)
         m = len(grid)
         n = len(grid[0])
         visited = [[False for _ in range(n)] for _ in range(m)]
