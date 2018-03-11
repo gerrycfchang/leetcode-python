@@ -1,3 +1,5 @@
+# 733. Flood Fill
+# 
 # An image is represented by a 2-D array of integers, each integer representing the pixel value of the image 
 # (from 0 to 65535).
 # 
@@ -37,17 +39,15 @@ class Solution(object):
         return image
         
     def dfs(self, i, j, image, value, newColor, visited):
-        m = len(image)
-        n = len(image[0])
+        m, n = len(image), len(image[0])
+        dirs = [[1,0],[-1,0],[0,1],[0,-1]]
         if i < 0 or i >= m or j < 0 or j >= n or visited[i][j] or image[i][j] != value:
             return
         image[i][j] = newColor
         visited[i][j] = True
         ## four directions
-        self.dfs(i-1, j, image, value, newColor, visited)
-        self.dfs(i+1, j, image, value, newColor, visited)
-        self.dfs(i, j-1, image, value, newColor, visited)
-        self.dfs(i, j+1, image, value, newColor, visited)
+        for _dir in dirs:
+            self.dfs(i+_dir[0], j+_dir[1], image, value, newColor, visited)
         
 if __name__ == '__main__':
     sol = Solution()
