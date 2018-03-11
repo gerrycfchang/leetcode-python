@@ -1,3 +1,5 @@
+# 417. Pacific Atlantic Water Flow 
+# 
 # Given an m x n matrix of non-negative integers representing the height of
 # each unit cell in a continent, the "Pacific ocean" touches the left and
 # top edges of the matrix and the "Atlantic ocean" touches the right and bottom edges.
@@ -54,13 +56,12 @@ class Solution(object):
 
     def dfs(self, matrix, visited, value, i, j):
         m, n = len(matrix), len(matrix[0])
+        dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]]
         if i < 0 or i >= m or j < 0 or j >= n or visited[i][j] or matrix[i][j] < value:
             return
         visited[i][j] = True
-        self.dfs(matrix, visited, matrix[i][j], i - 1, j)
-        self.dfs(matrix, visited, matrix[i][j], i + 1, j)
-        self.dfs(matrix, visited, matrix[i][j], i, j - 1)
-        self.dfs(matrix, visited, matrix[i][j], i, j + 1)
+        for _dir in dirs:
+            self.dfs(matrix, visited, matrix[i][j], i + _dir[0], j + _dir[1])
 
 if __name__ == '__main__':
     sol = Solution()
