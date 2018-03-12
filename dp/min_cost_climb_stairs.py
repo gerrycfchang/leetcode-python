@@ -1,4 +1,6 @@
 """
+746. Min Cost Climbing Stairs
+
 On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
 
 Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.
@@ -30,9 +32,7 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        dp = [0 for _ in range (len(cost)+1)]
-        dp[0], dp[1] = 0, 0
-        
+        dp = [0 for _ in range (len(cost)+1)]        
         for i in range(2, len(cost)+1):
             dp[i] = min(dp[i-1] + cost[i-1], dp[i-2] + cost[i-2])            
         return dp[len(cost)]
