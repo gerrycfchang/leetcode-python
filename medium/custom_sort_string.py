@@ -1,4 +1,6 @@
 """
+791. Custom Sort String
+
 S and T are strings composed of lowercase letters. In S, no letter occurs more than once.
 
 S was sorted in some custom order previously. We want to permute the characters of T so that they match the order that S was sorted. More specifically, if x occurs before y in S, then x should occur before y in the returned string.
@@ -24,17 +26,17 @@ class Solution(object):
         """
         from collections import Counter
         c = Counter(T)
-        res1, res2 = [], []
+        res1 = []
         for i in range(len(S)):
             res1.append(c[S[i]] * S[i])
             
         for i in range (len(T)):
             if T[i] not in S:
-                res2.append(T[i])
+                res1.append(T[i])
 
-        #return ''.join(res1) + ''.join(res2)
+        return ''.join(res1)
 
-        return ''.join(c[S[i]] * S[i] for i in range(len(S))) + ''.join(T[i] for i in range(len(T)) if T[i] not in S )
+        #return ''.join(c[S[i]] * S[i] for i in range(len(S))) + ''.join(T[i] for i in range(len(T)) if T[i] not in S )
             
         
 if __name__ == '__main__':
