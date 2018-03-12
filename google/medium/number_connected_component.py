@@ -33,9 +33,9 @@ import collections
 class Solution(object):
     def countComponents(self, n, edges):
         adj = collections.defaultdict(list)
-        for edge in edges:
-            adj[edge[0]].append(edge[1])
-            adj[edge[1]].append(edge[0])
+        for i, j in edges:
+            adj[i].append(j)
+            adj[j].append(i)
         bfsque, visited, count = [], [0 for _ in range(n)], 0
 
         while len(adj) > 0:
@@ -69,6 +69,9 @@ if __name__ == '__main__':
     assert (sol.countComponents(8, edges) == 4)
 
     edges = [[3, 2], [1, 2], [0, 1], [3, 4]]
-    assert (sol.countComponents(8, edges) == 1)
+    assert (sol.countComponents(5, edges) == 1)
+
+    edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]]
+    assert (sol.countComponents(5, edges) == 1)
 
 
