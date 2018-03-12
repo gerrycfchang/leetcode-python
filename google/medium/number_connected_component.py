@@ -39,7 +39,7 @@ class Solution(object):
         bfsque, visited, count = [], [0 for _ in range(n)], 0
 
         while len(adj) > 0:
-            newNode = sorted(adj.items(), key = lambda x: x[1])[0][0]
+            newNode = sorted(adj.items(), key = lambda x: x[0])[0][0]
             bfsque.append(newNode)
             while len(bfsque) > 0:
                 i = bfsque.pop(0)
