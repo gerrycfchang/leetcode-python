@@ -15,18 +15,18 @@
 
 class Solution(object):
     def shortestDistance(self, maze, start, destination):
-        m, n, cost, costlist = len(maze), len(maze[0]), [0], []
+        m, n, costlist = len(maze), len(maze[0]), []
         visited = [[float('inf') for _ in range(n)] for _ in range(m)]
-        res = self.dfs(maze, start[0], start[1], destination, visited, cost, costlist)
+        res = self.dfs(maze, start[0], start[1], destination, visited, 0, costlist)
         return min(costlist) if res else -1
 
     def dfs(self, maze, i, j, dest, visited, cost, costlist):
         m, n, res = len(maze), len(maze[0]), False
         dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]]        
         if i == dest[0] and j == dest[1]: 
-            costlist.append(cost[0])
+            costlist.append(cost)
             return True        
-        visited[i][j] = cost[0]
+        visited[i][j] = cost
         for _dir in dirs:
             x, y, tmpcost = i, j, 0
             while x >= 0 and x < m and y >= 0 and y < n and maze[x][y] == 0:
@@ -36,10 +36,8 @@ class Solution(object):
             x -= _dir[0]
             y += _dir[1]
             tmpcost = tmpcost - (abs(_dir[0]) + abs(_dir[1]))
-            if visited[x][y] > cost[0] + tmpcost:
-                cost[0] = cost[0] + tmpcost
-                tmp = self.dfs(maze, x, y, dest, visited, cost, costlist)
-                cost[0] = cost[0] - tmpcost
+            if visited[x][y] > cost + tmpcost:
+                tmp = self.dfs(maze, x, y, dest, visited, cost + tmpcost, costlist)
                 res |= tmp
         return res
 
