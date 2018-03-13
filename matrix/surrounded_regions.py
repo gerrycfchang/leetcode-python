@@ -66,6 +66,7 @@ class Solution(object):
         def dfs(board, i, j, visited, flip):
             m, n = len(board), len(board[0])
             dirs = [[1,0],[-1,0],[0,1],[0,-1]]
+            if i < 0 or i >= m or j < 0 or j >= n or visited[i][j] or board[i][j] == 'X': return
             visited[i][j] = True
             res.append([i, j])            
             if board[i][j] == 'O' and (i == 0 or i == m - 1 or j == 0 or j == n - 1):
@@ -73,11 +74,7 @@ class Solution(object):
                 return
             else:
                 for _dir in dirs:
-                    x = i +_dir[0]
-                    y = j + _dir[1]
-                    if x >=0 and x<m and y>=0 and y<n and not visited[x][y] and board[x][y] == 'O':
-                        dfs(board, x, y, visited, flip)
-        
+                    dfs(board, i +_dir[0] , j + _dir[1], visited, flip)        
         m = len(board)
         if m == 0: return
         n = len(board[0])
