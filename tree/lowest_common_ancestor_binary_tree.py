@@ -33,9 +33,11 @@ class Solution(object):
         :rtype: TreeNode
         """
         if root in (None, p, q): return root
-        left, right = (self.lowestCommonAncestor(kid, p, q)
-                       for kid in (root.left, root.right))
-        return root if left and right else left or right
+        ## parent[0] = left, parent[1] = right
+        parent = []
+        for kid in (root.left, root.right):
+            parent.append(self.lowestCommonAncestor(kid, p, q))
+        return root if parent[0] and parent[1] else parent[0] or parent[1]
             
 if __name__ == '__main__':
     sol = Solution()
