@@ -14,7 +14,7 @@
 # Example 2:
 # Input: "LL"
 # Output: false
-
+import collections
 class Solution(object):
     def judgeCircle(self, moves):
         """
@@ -32,9 +32,21 @@ class Solution(object):
             else:
                 lrqueue.append(-1)
         return True if sum(lrqueue) + sum(udqueue) == 0 else False
+
+    def judgeCircleSol(self, moves):
+        """
+        :type moves: str
+        :rtype: bool
+        """
+        c = collections.Counter(moves)
+        return True if c['U'] == c['D'] and c['L'] == c['R'] else False
+    
                 
         
 if __name__ == "__main__":
     sol = Solution()
     assert sol.judgeCircle('UD') == True
     assert sol.judgeCircle('LL') == False
+
+    assert sol.judgeCircleSol('UD') == True
+    assert sol.judgeCircleSol('LL') == False
