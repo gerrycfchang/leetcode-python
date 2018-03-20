@@ -38,10 +38,9 @@ class Solution(object):
         :type p: str
         :rtype: List[int]
         """
-        res = []
+        begin, end, res = 0, 0, []
         pStillNeed = collections.Counter(p)
         counter = len(pStillNeed)
-        begin = end = 0
 
         while end < len(s):
             c = s[end]
