@@ -11,9 +11,31 @@
 # Given "pwwkew", the answer is "wke", with the length of 3. 
 # Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-
+import collections
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        pStillNeed = collections.Counter()
+        counter = begin = end = length = 0
+        while end < len(s):
+            c = s[end]
+            pStillNeed[c] += 1
+            if pStillNeed[c] > 1:
+                counter += 1
+            end += 1
+            while counter > 0:
+                tempc = s[begin]
+                if pStillNeed[tempc] > 1:
+                    counter -= 1
+                pStillNeed[tempc] -= 1
+                begin += 1
+            length = max(length, end - begin)
+        return length
+
+    def lengthOfLongestSubstringDP(self, s):
         """
         :type s: str
         :rtype: int
@@ -38,3 +60,8 @@ if __name__ == "__main__":
     assert sol.lengthOfLongestSubstring('dvdf') == 3
     assert sol.lengthOfLongestSubstring('pwwkew') == 3
     assert sol.lengthOfLongestSubstring('tmmzuxt') == 5
+    assert sol.lengthOfLongestSubstringDP('abcabcbb') == 3
+    assert sol.lengthOfLongestSubstringDP('bbbbb') == 1
+    assert sol.lengthOfLongestSubstringDP('dvdf') == 3
+    assert sol.lengthOfLongestSubstringDP('pwwkew') == 3
+    assert sol.lengthOfLongestSubstringDP('tmmzuxt') == 5
