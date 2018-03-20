@@ -28,9 +28,9 @@ class Solution(object):
             end += 1
             while counter > 0:
                 tempc = s[begin]
-                if pStillNeed[tempc] > 1:
-                    counter -= 1
                 pStillNeed[tempc] -= 1
+                if pStillNeed[tempc] > 0:
+                    counter -= 1                
                 begin += 1
             length = max(length, end - begin)
         return length
