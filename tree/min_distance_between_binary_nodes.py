@@ -1,4 +1,8 @@
 """
+783. Minimum Distance Between BST Nodes
+refer to 
+530. Minimum Absolute Difference in BST
+
 Given a Binary Search Tree (BST) with the root node root, return the minimum difference 
 
 between the values of any two different nodes in the tree.
@@ -24,14 +28,11 @@ also between node 3 and node 2.
 
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-import sys
-sys.path.append('../')
-from leetCodeUtil import TreeNode
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution(object):
     def minDiffInBST(self, root):
@@ -43,13 +44,31 @@ class Solution(object):
         def inorder(node):
             if not node: return
             inorder(node.left)
-            sortArray.append(node.value)
+            sortArray.append(node.val)
             inorder(node.right)
         inorder(root)
         minDist = float('inf')
         for x in range (len(sortArray)-1, 0, -1):
             minDist = min(minDist, sortArray[x] - sortArray[x-1])
         return minDist
+
+    def minDiffInBSTSol(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        Solution.minDist = float('inf')
+        Solution.prev = None
+        
+        def inorder(node):
+            if not node: return
+            inorder(node.left)
+            if Solution.prev:
+                Solution.minDist = min (Solution.minDist, abs(node.val - Solution.prev.val))
+            Solution.prev = node
+            inorder(node.right)
+        inorder(root)
+        return Solution.minDist
 
 if __name__ == '__main__':
     sol = Solution()
@@ -75,6 +94,7 @@ if __name__ == '__main__':
     node1.left = node3
     node1.right = node4
     assert sol.minDiffInBST(root) == 1
+    assert sol.minDiffInBSTSol(root) == 1
 
 
     """
@@ -99,4 +119,5 @@ if __name__ == '__main__':
     node1.right = node3
     node2.right = node4
     assert sol.minDiffInBST(root) == 1
+    assert sol.minDiffInBSTSol(root) == 1
     
