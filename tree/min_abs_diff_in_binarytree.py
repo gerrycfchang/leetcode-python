@@ -1,5 +1,6 @@
 # 530. Minimum Absolute Difference in BST
 # 
+# refer to 783. Minimum Distance Between BST Nodes
 # Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.
 # 
 # Example:
