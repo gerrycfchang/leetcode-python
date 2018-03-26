@@ -25,7 +25,11 @@ class Solution(object):
             else: return False
         return True
         
+    def detectCapitalUseSol(self, word):
+        return word.isupper() or word.islower() or word.istitle()
+    
 if __name__ == '__main__':
     sol = Solution()
     assert sol.detectCapitalUse('USA') == True
     assert sol.detectCapitalUse('FlaG') == False
+    assert sol.detectCapitalUseSol('FlaG') == False
