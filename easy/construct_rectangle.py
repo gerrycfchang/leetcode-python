@@ -26,7 +26,6 @@ class Solution(object):
             if area % i == 0 and area/i >= i:
                 if abs(i - area/i) < diff:
                     diff = abs(i - area/i)
-                    del res[::]
                     res = [area/i, i]
         return res
         
