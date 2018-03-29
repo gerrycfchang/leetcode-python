@@ -52,7 +52,7 @@ class Solution(object):
                     chars.insert(i, n)
                     i += 1
                 if i < len(chars) and chars[i] == chars[i-1]: i += 1
-            if count == 1: i+= 1
+            else: i += 1
         return (chars)
                 
                     
