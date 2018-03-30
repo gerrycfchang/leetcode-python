@@ -8,12 +8,21 @@
 
 class Solution(object):
     def wiggleSort(self, nums):
-        nums.sort()
-        for i in range(2, len(nums), 2):
-            nums[i-1], nums[i] = nums[i], nums[i-1]
+        prev, incr = nums[0], True
+        for i in range(1, len(nums)):
+            if (incr and prev < nums[i]) or (not incr and prev > nums[i]):
+                nums[i - 1] = prev
+                prev = nums[i]
+            else:
+                nums[i-1] = nums[i]
+            incr = not incr
         
 if __name__ == '__main__':
     sol = Solution()
     nums = [3, 5, 2, 1, 6, 4]
     sol.wiggleSort(nums) 
-    assert nums == [1, 3, 2, 5, 4, 6]
+    assert nums == [3, 5, 1, 6, 2, 4]
+
+    nums = [1,2,2,1,2,1,1,1,1,2,2,2]
+    sol.wiggleSort(nums)
+    assert nums == [1,2,1,2,1,2,1,2,1,2,1,2]
