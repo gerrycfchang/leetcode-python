@@ -5,7 +5,6 @@ class BubbleSort(object):
             for j in range (i+1,len(num)):
                 if num[i] > num[j]:
                     num[i], num[j] = num[j], num[i]
-        return
 
 class SelectionSort(object):
     def sort(self, num):
@@ -50,7 +49,7 @@ class QuickSort(object):
 class MergeSort(object):
     def sort(self, num, front, end):
         if front < end:
-            mid = (front + end) / 2
+            mid = (front + end) // 2
             self.sort(num, front, mid)
             self.sort(num, mid + 1, end)
             self.merge(num, front, mid, end)
@@ -80,7 +79,7 @@ class HeapSort(object):
             self.maxHeapify(num, 0, i)
 
     def buildHeap(self, num):
-        i = len(num) /2
+        i = len(num) // 2
         while i >=0:
             self.maxHeapify(num, i, len(num))
             i -= 1
@@ -107,7 +106,7 @@ class RadixSort(object):
         k, n = 0, 1
         while n <= d:
             for i in range(length):
-                lsd = (num[i]/n) % 10
+                lsd = (num[i]//n) % 10
                 temp[lsd][order[lsd]] = num[i]
                 order[lsd] += 1
 
