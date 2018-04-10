@@ -30,11 +30,9 @@ class Solution(object):
         for _dir in dirs:
             x, y, tmpcost = i, j, 0
             while x >= 0 and x < m and y >= 0 and y < n and maze[x][y] == 0:
-                x += _dir[0]
-                y -= _dir[1]
+                x, y = x+_dir[0], y-_dir[1]
                 tmpcost = tmpcost + abs(_dir[0]) + abs(_dir[1])
-            x -= _dir[0]
-            y += _dir[1]
+            x, y = x-_dir[0], y+_dir[1]
             tmpcost = tmpcost - (abs(_dir[0]) + abs(_dir[1]))
             if visited[x][y] > cost + tmpcost:
                 tmp = self.dfs(maze, x, y, dest, visited, cost + tmpcost, costlist)
