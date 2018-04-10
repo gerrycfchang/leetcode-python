@@ -218,20 +218,4 @@ if __name__ == '__main__':
     assert sol.firstNonRepeatChar('abab') == None
     assert sol.firstNonRepeatChar('') == None
     assert sol.longestPalindromSubseq('bbbab') == 4
-
-    s, p = "cbaebabacd", "abc"
-    a=[]
-    l=len(p)
-    cp=collections.Counter(p)
-    cs=collections.Counter(s[:l-1])
-    i=0
-    while i+l<=len(s):
-        cs[s[i+l-1]]+=1
-        if cs==cp:
-            a.append(i)
-        cs[s[i]]-=1
-        if cs[s[i]]==0:
-            del cs[s[i]]
-        i+=1         
-    print a  
  
