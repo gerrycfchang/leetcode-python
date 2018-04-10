@@ -23,20 +23,18 @@ class Solution(object):
         if n == 0: return []
         dirs = [[0, 1],[1, 0],[0, -1],[-1, 0]]
         matrix = [[0] * n for _ in range(n)]
-        i = j = 0
+        i = j = idx = 0
         num = 1
         while num < n ** 2 + 1:
-            for _dir in dirs:
-                while i >= 0 and j >= 0 and i < n and j < n and matrix[i][j] == 0:
-                    matrix[i][j] = num
-                    num += 1
-                    i += _dir[0]
-                    j += _dir[1]
-                if num == n ** 2 + 1: break
-                i -= _dir[0]
-                j -= _dir[1]
-                num -= 1
-                matrix[i][j] = 0
+            matrix[i][j] = num
+            num += 1
+            tmpi = i + dirs[idx][0]
+            tmpj = j + dirs[idx][1]
+            if tmpi >= 0 and tmpj >= 0 and tmpi < n and tmpj < n and matrix[tmpi][tmpj] == 0:
+                i, j = tmpi, tmpj
+            else:   
+                idx = (idx+1) % 4
+                i, j = i + dirs[idx][0], j + dirs[idx][1]
         return matrix
         
 
