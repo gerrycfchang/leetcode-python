@@ -54,7 +54,7 @@ class Solution(object):
             root.left = self.construct(preorder[1:rootIdx+1], inorder[0:rootIdx])
         rightLastIdx = len(inorder) - 1
         if rightLastIdx > inorder.index(preorder[0]):            
-            root.right = self.construct(preorder[rootIdx + 1:len(preorder)], inorder[rootIdx+1:len(inorder)])
+            root.right = self.construct(preorder[rootIdx + 1:], inorder[rootIdx+1:])
         return root
         
 
