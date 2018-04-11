@@ -26,8 +26,7 @@ class Solution(object):
         while len(res) < m*n:
             visited[i][j] = True
             res.append(matrix[i][j])
-            tmpi = i + dirs[idx][0]
-            tmpj = j + dirs[idx][1]        
+            tmpi, tmpj = i + dirs[idx][0], j + dirs[idx][1]
             if tmpi >= 0 and tmpj >= 0 and tmpi < m and tmpj < n and not visited[tmpi][tmpj]:
                 i, j = tmpi, tmpj 
             else:

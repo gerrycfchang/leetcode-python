@@ -28,8 +28,7 @@ class Solution(object):
         while num < n ** 2 + 1:
             matrix[i][j] = num
             num += 1
-            tmpi = i + dirs[idx][0]
-            tmpj = j + dirs[idx][1]
+            tmpi, tmpj = i + dirs[idx][0], j + dirs[idx][1]
             if tmpi >= 0 and tmpj >= 0 and tmpi < n and tmpj < n and matrix[tmpi][tmpj] == 0:
                 i, j = tmpi, tmpj
             else:   
