@@ -81,7 +81,6 @@ class Solution(object):
 
     def inorder(self, node, level, v, d):
         if not node: return
-        self.inorder(node.left, level+1, v, d)
         if level == d-1:            
             newLeftNode = TreeNode(v)
             newLeftNode.left = node.left
@@ -90,6 +89,7 @@ class Solution(object):
             newRightNode.right = node.right
             node.right = newRightNode
             return
+        self.inorder(node.left, level+1, v, d)
         self.inorder(node.right, level+1, v, d)
 
 
