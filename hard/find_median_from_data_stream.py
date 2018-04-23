@@ -28,8 +28,8 @@ class MedianFinder(object):
         """
         initialize your data structure here.
         """
-        self.small = []
-        self.large = []
+        self.small = []  # the smaller half of the list, max heap (invert min-heap)
+        self.large = []  # the larger half of the list, min heap
         
 
     def addNum(self, num):
