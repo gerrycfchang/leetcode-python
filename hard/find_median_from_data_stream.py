@@ -36,9 +36,8 @@ class MedianFinder(object):
         """
         :type num: int
         :rtype: void
-        """
-        heappush(self.small, -num)
-        heappush(self.large, -heappop(self.small))
+        """        
+        heappush(self.large, -heappushpop(self.small, -num))
         if len(self.small) < len(self.large):
             heappush(self.small, -heappop(self.large))
         
