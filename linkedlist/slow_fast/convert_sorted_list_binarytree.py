@@ -1,4 +1,6 @@
 """
+109. Convert Sorted List to Binary Search Tree
+
 Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
 
 For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
@@ -19,21 +21,29 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 """
 
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-import sys
-sys.path.append('../')
-from leetCodeUtil import ListNode
-from leetCodeUtil import TreeNode
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+        self.seqlist = []
+
+    def __str__(self):
+        self.inorder(self)
+        return ''.join(str(x) for x in self.seqlist)
+    
+    def inorder(self, curr):
+        if not curr: return
+        self.inorder(curr.left)
+        self.seqlist.append(curr.val)
+        self.inorder(curr.right)
+
 
 class Solution(object):
     def sortedListToBST(self, head):
@@ -71,6 +81,6 @@ if __name__ == '__main__':
     node3.next = node4
     node4.next = node5
 
-    result = sol.sortedListToBST(node1)
+    res = sol.sortedListToBST(node1)
     exp1 = [1, 2, None, 3, None, 4, 5]
-    assert result == exp1
+    assert str(res) == '12345'        
