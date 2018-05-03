@@ -43,16 +43,12 @@ class Solution(object):
         :type inorder: List[int]
         :rtype: TreeNode
         """        
-        res =  self.construct(preorder, inorder)
-        return res
-        
-    def construct(self, preorder, inorder):
         if not preorder: return
         root = TreeNode(preorder[0])
         rootIdx = inorder.index(preorder[0])
         if rootIdx  > 0:
-            root.left = self.construct(preorder[1:rootIdx+1], inorder[0:rootIdx])                    
-        root.right = self.construct(preorder[rootIdx + 1:], inorder[rootIdx+1:])
+            root.left = self.buildTree(preorder[1:rootIdx+1], inorder[0:rootIdx])                   
+        root.right = self.buildTree(preorder[rootIdx + 1:], inorder[rootIdx+1:])
         return root
         
 
