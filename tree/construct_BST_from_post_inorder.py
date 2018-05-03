@@ -42,16 +42,12 @@ class Solution(object):
         :type postorder: List[int]
         :rtype: TreeNode
         """
-        res =  self.construct(inorder, postorder)
-        return res
-
-    def construct(self, inorder, postorder):
         if not postorder: return
         root = TreeNode(postorder[-1])
         rootIdx = inorder.index(postorder[-1]) # this means how many elements in left side
         if rootIdx  > 0:
-            root.left = self.construct(inorder[0:rootIdx], postorder[0:rootIdx])        
-        root.right = self.construct(inorder[rootIdx+1:], postorder[rootIdx:-1])
+            root.left = self.buildTree(inorder[0:rootIdx], postorder[0:rootIdx])        
+        root.right = self.buildTree(inorder[rootIdx+1:], postorder[rootIdx:-1])
         return root
 
 if __name__ == '__main__':
